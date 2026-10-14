@@ -1,5 +1,17 @@
 [
   {
+    "id": "rep-049ef8",
+    "destination_id": "taj-mahal",
+    "destination_name": "Taj Mahal",
+    "category": "Temporary Closure",
+    "title": "&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;Normal Title",
+    "description": "Details about gate 2 update.",
+    "reported_at": "2026-10-14T09:22:37.196695Z",
+    "reported_by": "Traveler",
+    "verification_status": "unverified",
+    "admin_notes": "Submitted via Community Portal. Pending verification."
+  },
+  {
     "id": "rep-5d1d93",
     "destination_id": "taj-mahal",
     "destination_name": "Taj Mahal",

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TravelReality AI • Know Before You Go</title>
-  <meta name="description" content="AI-powered destination intelligence and personalized travel decision support before you visit.">
+  <title>WayWise AI • Know Before You Go</title>
+  <meta name="description" content="WayWise AI: AI-powered destination intelligence and personalized travel decision support before you visit.">
   
   <!-- Tailwind CSS via official CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,35 +27,41 @@
     }
   </script>
 
-  <!-- Custom CSS for micro-interactions & accessibility -->
+  <!-- Custom CSS for WCAG 2.1 AAA Accessibility & Micro-Interactions -->
   <link rel="stylesheet" href="/static/css/custom.css">
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col antialiased selection:bg-sky-500 selection:text-white">
 
+  <!-- Accessible Skip to Main Content Link -->
+  <a href="#main-content" class="skip-to-content">Skip to Main Content</a>
+
+  <!-- Screen Reader Live Announcement Region -->
+  <div id="a11y-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
   <!-- Top App Navigation Bar -->
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 transition-all shadow-xs" role="banner">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
       
       <!-- Brand Logo -->
-      <a href="#" data-tab="home" class="flex items-center gap-2.5 group focus:outline-none">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-600 to-teal-500 text-white flex items-center justify-center font-black shadow-sm group-hover:scale-105 transition-transform">
+      <a href="#" data-tab="home" class="flex items-center gap-2.5 group focus:outline-none" aria-label="WayWise AI Home">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-600 to-teal-500 text-white flex items-center justify-center font-black shadow-sm group-hover:scale-105 transition-transform" aria-hidden="true">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
         </div>
         <div>
-          <span class="text-base sm:text-lg font-black tracking-tight text-slate-900">TravelReality<span class="text-sky-600"> AI</span></span>
-          <span class="hidden sm:inline-block ml-2 text-[11px] font-semibold text-slate-400 border-l border-slate-200 pl-2">Know Before You Go</span>
+          <span class="text-base sm:text-lg font-black tracking-tight text-slate-900">WayWise<span class="text-sky-600"> AI</span></span>
+          <span class="hidden sm:inline-block ml-2 text-[11px] font-semibold text-slate-500 border-l border-slate-200 pl-2">Know Before You Go</span>
         </div>
       </a>
 
       <!-- Desktop Navigation Links -->
-      <nav class="hidden md:flex items-center gap-1 text-xs">
-        <button data-tab="home" class="px-3 py-2 rounded-xl text-sky-600 font-bold hover:bg-slate-100 transition">Overview</button>
-        <button data-tab="explore" class="px-3 py-2 rounded-xl text-slate-600 font-medium hover:bg-slate-100 transition">Destinations</button>
-        <button data-tab="compare" class="px-3 py-2 rounded-xl text-slate-600 font-medium hover:bg-slate-100 transition relative">
+      <nav class="hidden md:flex items-center gap-1 text-xs" role="navigation" aria-label="Main Navigation">
+        <button data-tab="home" class="px-3.5 py-2 rounded-xl text-sky-600 font-bold hover:bg-slate-100 transition" aria-current="page">Overview</button>
+        <button data-tab="explore" class="px-3.5 py-2 rounded-xl text-slate-700 font-medium hover:bg-slate-100 transition">Destinations</button>
+        <button data-tab="compare" class="px-3.5 py-2 rounded-xl text-slate-700 font-medium hover:bg-slate-100 transition relative">
           Side-by-Side Compare
-          <span id="compare-badge-count" class="hidden ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-sky-600 text-white">0</span>
+          <span id="compare-badge-count" class="hidden ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-sky-600 text-white" aria-label="Destinations compared">0</span>
         </button>
-        <button data-tab="community" class="px-3 py-2 rounded-xl text-slate-600 font-medium hover:bg-slate-100 transition">Community Reports</button>
+        <button data-tab="community" class="px-3.5 py-2 rounded-xl text-slate-700 font-medium hover:bg-slate-100 transition">Community Reports</button>
       </nav>
 
       <!-- Right Header Actions: Profile & Settings -->
@@ -64,58 +70,58 @@
           <!-- Dynamically populated profile button -->
         </div>
 
-        <button class="btn-open-settings p-2 text-slate-500 hover:text-slate-800 rounded-xl hover:bg-slate-100 transition" title="AI Provider & API Settings">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        <button class="btn-open-settings p-2 text-slate-600 hover:text-slate-900 rounded-xl hover:bg-slate-100 transition" title="AI Provider & System Settings" aria-label="Open AI Provider and System Settings">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
         </button>
       </div>
 
     </div>
 
-    <!-- Mobile Nav Bar (Bottom pinned or secondary strip) -->
-    <div class="md:hidden flex items-center justify-around border-t border-slate-100 py-2 bg-white text-xs">
-      <button data-tab="home" class="py-1 px-2 text-sky-600 font-bold">Overview</button>
-      <button data-tab="explore" class="py-1 px-2 text-slate-600">Destinations</button>
-      <button data-tab="compare" class="py-1 px-2 text-slate-600">Compare</button>
-      <button data-tab="community" class="py-1 px-2 text-slate-600">Reports</button>
+    <!-- Mobile Nav Bar -->
+    <div class="md:hidden flex items-center justify-around border-t border-slate-200 py-2 bg-white text-xs" role="navigation" aria-label="Mobile Navigation">
+      <button data-tab="home" class="py-1 px-2.5 text-sky-600 font-bold">Overview</button>
+      <button data-tab="explore" class="py-1 px-2.5 text-slate-700">Destinations</button>
+      <button data-tab="compare" class="py-1 px-2.5 text-slate-700">Compare</button>
+      <button data-tab="community" class="py-1 px-2.5 text-slate-700">Reports</button>
     </div>
   </header>
 
   <!-- Main View Area -->
-  <main id="main-content" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <main id="main-content" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 focus:outline-none" tabindex="-1">
     <!-- View rendered by app.js -->
   </main>
 
   <!-- Global Footer -->
-  <footer class="bg-white border-t border-slate-200 mt-16 py-12 text-slate-600 text-xs">
+  <footer class="bg-white border-t border-slate-200 mt-16 py-12 text-slate-700 text-xs" role="contentinfo">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 pb-8 border-b border-slate-100">
         
         <div>
           <div class="flex items-center gap-2 mb-2">
-            <div class="w-6 h-6 rounded-lg bg-sky-600 text-white flex items-center justify-center font-bold text-xs">TR</div>
-            <span class="font-extrabold text-slate-900 text-sm">TravelReality AI</span>
+            <div class="w-6 h-6 rounded-lg bg-sky-600 text-white flex items-center justify-center font-bold text-xs" aria-hidden="true">WW</div>
+            <span class="font-extrabold text-slate-900 text-sm">WayWise AI</span>
           </div>
-          <p class="text-slate-500 leading-relaxed mb-3">
-            Know Before You Go. Evidence-based destination decision support combining verified ground conditions with personalized traveler profiles.
+          <p class="text-slate-600 leading-relaxed mb-3">
+            Know Before You Go. Evidence-based destination decision support combining verified ground facts with personalized traveler profiles.
           </p>
-          <span class="text-[11px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-            Factual Grounding • Zero Fabrication
+          <span class="text-[11px] text-emerald-800 font-semibold bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200 inline-block">
+            ✓ 100% Factual Grounding • Zero Fabrication
           </span>
         </div>
 
         <div>
           <h4 class="font-bold text-slate-900 mb-2.5">The Reality Check</h4>
-          <ul class="space-y-1.5 text-slate-500">
-            <li><span class="font-semibold text-slate-700">A.</span> What We Know (Factual Sources)</li>
-            <li><span class="font-semibold text-slate-700">B.</span> How Well It Matches You</li>
-            <li><span class="font-semibold text-slate-700">C.</span> What Could Be Difficult</li>
-            <li><span class="font-semibold text-slate-700">D.</span> What To Verify Before Leaving</li>
+          <ul class="space-y-1.5 text-slate-600">
+            <li><span class="font-semibold text-slate-800">A.</span> What We Know (Official Sources)</li>
+            <li><span class="font-semibold text-slate-800">B.</span> How Well It Matches You</li>
+            <li><span class="font-semibold text-slate-800">C.</span> What Could Be Difficult</li>
+            <li><span class="font-semibold text-slate-800">D.</span> What To Verify Before Leaving</li>
           </ul>
         </div>
 
         <div>
           <h4 class="font-bold text-slate-900 mb-2.5">Data Sources & Provenance</h4>
-          <ul class="space-y-1.5 text-slate-500">
+          <ul class="space-y-1.5 text-slate-600">
             <li>Archaeological Survey of India (ASI)</li>
             <li>State Tourism Boards (UP, TN, Karnataka, etc.)</li>
             <li>Open-Meteo Meteorological Service</li>
@@ -125,40 +131,63 @@
 
         <div>
           <h4 class="font-bold text-slate-900 mb-2.5">Privacy & Ethics</h4>
-          <p class="text-slate-500 leading-relaxed mb-2">
-            Preferences and accessibility criteria are stored locally on your device only. No health or personal telemetry is transmitted.
+          <p class="text-slate-600 leading-relaxed mb-2">
+            Preferences and accessibility criteria are stored locally on your device only. Zero telemetry or personal health data is transmitted.
           </p>
-          <button class="btn-open-profile text-sky-600 font-semibold hover:underline">Edit Travel Preferences</button>
+          <button class="btn-open-profile text-sky-600 font-semibold hover:underline">Edit Travel Profile</button>
         </div>
 
       </div>
 
-      <div class="flex flex-wrap items-center justify-between gap-4 text-[11px] text-slate-400">
-        <span>© 2026 TravelReality AI. Developed for AI Innovation in Tourism & Local Development.</span>
-        <span>Built with FastAPI, Google Gemini, and Open-Meteo.</span>
+      <div class="flex flex-wrap items-center justify-between gap-4 text-[11px] text-slate-500">
+        <span>© 2026 WayWise AI. Dedicated to accessible, transparent, and trustworthy tourism.</span>
+        <span>Built with FastAPI, Google Gemini, Open-Meteo, and Tailwind CSS.</span>
       </div>
     </div>
   </footer>
 
   <!-- MODAL: Personalized Travel Profile Questionnaire -->
-  <div id="profile-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+  <div id="profile-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="profile-modal-title">
     <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
       
       <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
         <div>
-          <h2 class="text-xl font-bold text-slate-900">Personalized Travel Profile</h2>
-          <p class="text-xs text-slate-500 mt-0.5">Customize your travel parameters to tailor Reality Checks and Suitability scoring.</p>
+          <h2 id="profile-modal-title" class="text-xl font-bold text-slate-900">Personalized Travel Profile</h2>
+          <p class="text-xs text-slate-600 mt-0.5">Customize your travel requirements to tailor Reality Checks and suitability evaluations.</p>
         </div>
-        <button class="btn-close-modal text-slate-400 hover:text-slate-700 p-1 text-lg">✕</button>
+        <button class="btn-close-modal text-slate-400 hover:text-slate-700 p-1 text-lg" aria-label="Close Profile Dialog">✕</button>
+      </div>
+
+      <!-- Quick 1-Click Persona Presets -->
+      <div class="mb-6 p-4 rounded-2xl bg-sky-50/70 border border-sky-100">
+        <span class="block text-xs font-bold text-sky-900 mb-2">⚡ 1-Click Traveler Personas</span>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+          <button type="button" class="btn-apply-persona p-2 rounded-xl bg-white border border-sky-200 hover:bg-sky-100 text-sky-950 font-medium text-left transition" data-persona="senior">
+            <span class="block font-bold">♿ Senior / Mobility</span>
+            <span class="text-[10px] text-slate-500">Step-free, slow pace</span>
+          </button>
+          <button type="button" class="btn-apply-persona p-2 rounded-xl bg-white border border-sky-200 hover:bg-sky-100 text-sky-950 font-medium text-left transition" data-persona="family">
+            <span class="block font-bold">👨‍👩‍👧 Family Trip</span>
+            <span class="text-[10px] text-slate-500">Kids, safe pacing</span>
+          </button>
+          <button type="button" class="btn-apply-persona p-2 rounded-xl bg-white border border-sky-200 hover:bg-sky-100 text-sky-950 font-medium text-left transition" data-persona="quick">
+            <span class="block font-bold">⏱ Short Stop</span>
+            <span class="text-[10px] text-slate-500">1.5h, minimal walk</span>
+          </button>
+          <button type="button" class="btn-apply-persona p-2 rounded-xl bg-white border border-sky-200 hover:bg-sky-100 text-sky-950 font-medium text-left transition" data-persona="trekker">
+            <span class="block font-bold">🎒 Active Trekker</span>
+            <span class="text-[10px] text-slate-500">High walk, ruins</span>
+          </button>
+        </div>
       </div>
 
       <form id="profile-form" class="space-y-6 text-xs text-slate-700">
 
         <!-- Available Time Slider -->
-        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
           <div class="flex items-center justify-between mb-2">
-            <label class="font-bold text-slate-900">Available Time Window</label>
-            <span id="profile-time-display" class="font-bold text-sky-700 bg-sky-100/70 px-2.5 py-0.5 rounded-full text-xs">3.0 Hours</span>
+            <label for="profile-time" class="font-bold text-slate-900">Available Time Window</label>
+            <span id="profile-time-display" class="font-bold text-sky-700 bg-sky-100/80 px-2.5 py-0.5 rounded-full text-xs">3.0 Hours</span>
           </div>
           <input 
             type="range" 
@@ -169,22 +198,23 @@
             value="3.0"
             class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-sky-600"
             oninput="document.getElementById('profile-time-display').textContent = this.value + ' Hours'"
+            aria-label="Available Time in Hours"
           />
-          <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+          <div class="flex justify-between text-[10px] text-slate-500 mt-1">
             <span>1h (Quick stop)</span>
             <span>4h (Half day)</span>
             <span>8h+ (Full day / Excursion)</span>
           </div>
         </div>
 
-        <!-- Walking & Accessibility Section (Crucial) -->
+        <!-- Walking & Accessibility Section -->
         <div class="space-y-3">
           <h3 class="font-bold text-slate-900 text-sm">Walking & Mobility Requirements</h3>
           
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block font-medium mb-1 text-slate-700">Preferred Walking Intensity</label>
-              <select id="profile-walk" class="w-full p-2.5 rounded-xl border border-slate-200 bg-white">
+              <label for="profile-walk" class="block font-semibold mb-1 text-slate-800">Preferred Walking Intensity</label>
+              <select id="profile-walk" class="w-full p-2.5 rounded-xl border border-slate-200 bg-white text-slate-800">
                 <option value="Minimal">Minimal (&lt; 1 km, level paths)</option>
                 <option value="Moderate" selected>Moderate (1 - 3 km)</option>
                 <option value="High">High (3+ km / active trekking)</option>
@@ -193,8 +223,8 @@
             </div>
 
             <div>
-              <label class="block font-medium mb-1 text-slate-700">Budget Tier</label>
-              <select id="profile-budget" class="w-full p-2.5 rounded-xl border border-slate-200 bg-white">
+              <label for="profile-budget" class="block font-semibold mb-1 text-slate-800">Budget Tier</label>
+              <select id="profile-budget" class="w-full p-2.5 rounded-xl border border-slate-200 bg-white text-slate-800">
                 <option value="Budget">Budget / Free</option>
                 <option value="Moderate" selected>Moderate</option>
                 <option value="Premium">Premium</option>
@@ -205,11 +235,11 @@
           <!-- Hard accessibility switches -->
           <div class="space-y-2 pt-2">
             <!-- Step Free (Strict) -->
-            <label class="flex items-start gap-3 p-3 rounded-2xl border border-sky-200 bg-sky-50/50 cursor-pointer hover:bg-sky-50 transition">
+            <label class="flex items-start gap-3 p-3.5 rounded-2xl border border-sky-300 bg-sky-50/70 cursor-pointer hover:bg-sky-50 transition">
               <input type="checkbox" id="profile-step-free" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500">
               <div>
                 <span class="font-bold text-sky-950 block">Step-Free Access Required (Wheelchair / Stroller Mandatory)</span>
-                <span class="text-[11px] text-sky-800">Treated as a strict non-negotiable constraint. Venues with unavoidable stairs will be flagged with high mismatch risks.</span>
+                <span class="text-[11px] text-sky-900">Treated as a strict non-negotiable constraint. Venues with unavoidable stairs without elevators will be flagged with high mismatch warnings.</span>
               </div>
             </label>
 
@@ -218,7 +248,7 @@
               <input type="checkbox" id="profile-min-stairs" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500">
               <div>
                 <span class="font-semibold text-slate-900 block">Minimize Stairs (Preference)</span>
-                <span class="text-[11px] text-slate-500">Prioritizes venues with lifts, level courtyards, or gentle ramps.</span>
+                <span class="text-[11px] text-slate-600">Prioritizes venues with lifts, level courtyards, or gentle ramps.</span>
               </div>
             </label>
           </div>
@@ -233,7 +263,7 @@
               <input type="checkbox" id="profile-children" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-sky-600">
               <div>
                 <span class="font-semibold text-slate-900 block">Traveling with Children</span>
-                <span class="text-[11px] text-slate-500">Flags safety risks, stroller access, and child amenities.</span>
+                <span class="text-[11px] text-slate-600">Flags safety risks, stroller access, and child amenities.</span>
               </div>
             </label>
 
@@ -241,7 +271,7 @@
               <input type="checkbox" id="profile-senior" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-sky-600">
               <div>
                 <span class="font-semibold text-slate-900 block">Slower-Paced / Senior Traveler</span>
-                <span class="text-[11px] text-slate-500">Checks for resting benches, golf buggies, and shaded zones.</span>
+                <span class="text-[11px] text-slate-600">Checks for resting benches, golf buggies, and shaded zones.</span>
               </div>
             </label>
           </div>
@@ -249,7 +279,7 @@
 
         <!-- Interests Chips -->
         <div>
-          <label class="block font-bold text-slate-900 mb-2">Primary Interests</label>
+          <span class="block font-bold text-slate-900 mb-2">Primary Interests</span>
           <div class="flex flex-wrap gap-2">
             ${['History', 'Architecture', 'Culture', 'Nature', 'Spiritual', 'Museum', 'Waterways', 'Relaxation'].map(item => `
               <label class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 cursor-pointer text-xs font-medium">
@@ -262,11 +292,11 @@
 
         <!-- Action Footer -->
         <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-          <button type="button" id="btn-reset-profile" class="text-xs font-semibold text-slate-400 hover:text-rose-600 transition">
+          <button type="button" id="btn-reset-profile" class="text-xs font-semibold text-slate-500 hover:text-rose-600 transition">
             Reset to Defaults
           </button>
           <div class="flex items-center gap-2">
-            <button type="button" class="btn-close-modal px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium">Cancel</button>
+            <button type="button" class="btn-close-modal px-4 py-2 rounded-xl text-slate-700 hover:bg-slate-100 font-medium">Cancel</button>
             <button type="submit" class="px-5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold shadow-sm transition">Save Preferences</button>
           </div>
         </div>
@@ -276,33 +306,33 @@
   </div>
 
   <!-- MODAL: Settings & AI Provider -->
-  <div id="settings-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+  <div id="settings-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title">
     <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
       
       <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-        <h3 class="text-lg font-bold text-slate-900">AI Engine & System Settings</h3>
-        <button class="btn-close-modal text-slate-400 hover:text-slate-700 p-1">✕</button>
+        <h3 id="settings-modal-title" class="text-lg font-bold text-slate-900">WayWise AI Engine Settings</h3>
+        <button class="btn-close-modal text-slate-400 hover:text-slate-700 p-1" aria-label="Close Settings Dialog">✕</button>
       </div>
 
       <form id="settings-form" class="space-y-4 text-xs text-slate-700">
         <div>
-          <label class="block font-semibold text-slate-800 mb-1">Google Gemini API Key (Optional)</label>
+          <label for="settings-gemini-key" class="block font-semibold text-slate-800 mb-1">Google Gemini API Key (Optional)</label>
           <input 
             type="password" 
             id="settings-gemini-key" 
             placeholder="AIzaSy..." 
             class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500/20 font-mono text-xs"
           />
-          <p class="text-[11px] text-slate-400 mt-1">If provided, Reality Check synthesis is processed via Google's Gemini API.</p>
+          <p class="text-[11px] text-slate-500 mt-1">If provided, Reality Checks are synthesized via Google Gemini API.</p>
         </div>
 
         <div class="p-3.5 rounded-2xl bg-sky-50/70 border border-sky-100 text-[11px] leading-relaxed text-sky-950">
           <span class="font-bold block text-sky-900 mb-1">Built-in Deterministic AI Fallback:</span>
-          When no key is configured or when offline, TravelReality AI automatically operates using its deterministic rule engine, calculating mathematical suitability and synthesizing structured reports without hallucination.
+          When no key is provided or when offline, WayWise AI automatically runs its deterministic mathematical rule engine, generating complete, factual reports without hallucinations.
         </div>
 
         <div class="flex justify-end gap-2 pt-2">
-          <button type="button" class="btn-close-modal px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium">Cancel</button>
+          <button type="button" class="btn-close-modal px-4 py-2 rounded-xl text-slate-700 hover:bg-slate-100 font-medium">Cancel</button>
           <button type="submit" class="px-5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold">Save Settings</button>
         </div>
       </form>
@@ -311,27 +341,27 @@
   </div>
 
   <!-- MODAL: Submit Community Condition Report -->
-  <div id="report-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+  <div id="report-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="report-modal-title">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
       
       <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
         <div>
-          <h3 class="text-lg font-bold text-slate-900">Submit Destination Observation</h3>
-          <p class="text-xs text-slate-500">Report temporary closures, unexpected obstacles, or accessibility changes</p>
+          <h3 id="report-modal-title" class="text-lg font-bold text-slate-900">Submit Destination Observation</h3>
+          <p class="text-xs text-slate-600">Report temporary closures, unexpected obstacles, or accessibility changes</p>
         </div>
-        <button class="btn-close-modal text-slate-400 hover:text-slate-700 p-1">✕</button>
+        <button class="btn-close-modal text-slate-400 hover:text-slate-700 p-1" aria-label="Close Report Dialog">✕</button>
       </div>
 
       <form id="report-form" class="space-y-3.5 text-xs text-slate-700">
         <div>
-          <label class="block font-semibold mb-1">Destination</label>
+          <label for="report-dest-select" class="block font-semibold mb-1">Destination</label>
           <select id="report-dest-select" class="w-full p-2 rounded-xl border border-slate-200 bg-white">
             <!-- Populated dynamically -->
           </select>
         </div>
 
         <div>
-          <label class="block font-semibold mb-1">Observation Category</label>
+          <label for="report-category-select" class="block font-semibold mb-1">Observation Category</label>
           <select id="report-category-select" class="w-full p-2 rounded-xl border border-slate-200 bg-white">
             <option value="Accessibility Issue">Accessibility Issue (Elevator down, ramp obstacle)</option>
             <option value="Temporary Closure">Temporary Closure or Maintenance</option>
@@ -343,26 +373,26 @@
         </div>
 
         <div>
-          <label class="block font-semibold mb-1">Observation Title</label>
+          <label for="report-title-input" class="block font-semibold mb-1">Observation Title</label>
           <input type="text" id="report-title-input" placeholder="e.g. East Gate ticket scanner offline; pay cash at gate 2" class="w-full p-2 rounded-xl border border-slate-200" required />
         </div>
 
         <div>
-          <label class="block font-semibold mb-1">Details & Context</label>
+          <label for="report-desc-input" class="block font-semibold mb-1">Details & Context</label>
           <textarea id="report-desc-input" rows="3" placeholder="Describe the condition, exact location, date observed, and practical advice for other visitors..." class="w-full p-2 rounded-xl border border-slate-200" required></textarea>
         </div>
 
         <div>
-          <label class="block font-semibold mb-1">Your Name / Handle (Optional)</label>
+          <label for="report-user-input" class="block font-semibold mb-1">Your Name / Handle (Optional)</label>
           <input type="text" id="report-user-input" placeholder="e.g. Traveler_Kavita" class="w-full p-2 rounded-xl border border-slate-200" />
         </div>
 
-        <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900">
+        <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-950">
           <span class="font-bold">Verification Notice:</span> All submitted reports are recorded as <span class="underline">Unverified</span> until reviewed by our editorial team to protect factual reliability.
         </div>
 
         <div class="flex justify-end gap-2 pt-2">
-          <button type="button" class="btn-close-modal px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium">Cancel</button>
+          <button type="button" class="btn-close-modal px-4 py-2 rounded-xl text-slate-700 hover:bg-slate-100 font-medium">Cancel</button>
           <button type="submit" class="px-5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold">Submit Report</button>
         </div>
       </form>
@@ -371,7 +401,7 @@
   </div>
 
   <!-- Toast Notification Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none" aria-live="polite"></div>
 
   <!-- ES6 App Entrypoint -->
   <script type="module" src="/static/js/app.js"></script>

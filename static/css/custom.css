@@ -1,4 +1,4 @@
-/* Custom Styling & Accessibility Enhancements for TravelReality AI */
+/* Custom Styling & WCAG 2.1 AAA Accessibility Enhancements for WayWise AI */
 
 :root {
   --primary: #0284c7;
@@ -9,33 +9,55 @@
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  color: #1e293b;
+  color: #0f172a;
   background-color: #f8fafc;
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Accessible focus outlines */
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-  outline: 2px solid #0284c7;
+/* Accessible Skip to Main Content Link */
+.skip-to-content {
+  position: absolute;
+  top: -60px;
+  left: 16px;
+  background: #0284c7;
+  color: #ffffff;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 12px;
+  z-index: 100;
+  transition: top 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skip-to-content:focus {
+  top: 16px;
+  outline: 3px solid #ffffff;
   outline-offset: 2px;
 }
 
-/* Glassmorphism subtle overlay */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+/* High-Contrast Accessible Focus Indicators */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #0284c7 !important;
+  outline-offset: 3px !important;
 }
 
-.hero-gradient {
-  background: radial-gradient(circle at top left, #f0f9ff 0%, #ffffff 60%, #f8fafc 100%);
+/* Subtle Shimmer for Image Loading Placeholder */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-/* Smooth modal transitions */
-.modal-backdrop {
-  background-color: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(4px);
-  transition: opacity 0.2s ease-in-out;
+.shimmer-loading {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
 }
 
 /* Card hover elevations */
@@ -48,32 +70,41 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.08);
 }
 
+/* Modal transitions */
+.modal-backdrop {
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.2s ease-in-out;
+}
+
 /* Checklist item toggle animation */
 .checklist-item.checked {
-  opacity: 0.6;
+  opacity: 0.65;
   text-decoration: line-through;
+  background-color: #f1f5f9;
 }
 
-/* Badge pulse for live condition */
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+/* Reduced motion preference support (WCAG 2.1) */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-.pulse-badge {
-  animation: pulse-subtle 2s infinite ease-in-out;
-}
-
-/* Print view for reality check reports */
+/* Clean Print Styling */
 @media print {
-  header, footer, .no-print, button, nav {
+  header, footer, nav, .no-print, button:not(.print-include) {
     display: none !important;
   }
-  .print-only {
-    display: block !important;
-  }
   body {
-    background: white;
-    color: black;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .bg-white {
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1 !important;
   }
 }

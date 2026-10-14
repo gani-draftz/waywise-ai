@@ -1,6 +1,12 @@
-import math
+"""
+Explainable Suitability Engine for WayWise AI.
+Compares destination attributes against individual travel profiles.
+Provides transparent factor-by-factor scoring, hard constraint enforcement,
+independent data completeness ratings, and grounded alternative suggestions.
+"""
+
 from typing import List, Dict, Any, Optional, Tuple
-from .models import TravelProfile, SuitabilityFactor, AlternativeSuggestion
+from .models import TravelProfile, SuitabilityFactor, AlternativeSuggestion, ScoreBreakdown
 
 def calculate_completeness_score(dest: Dict[str, Any]) -> int:
     """
@@ -31,13 +37,14 @@ def calculate_completeness_score(dest: Dict[str, Any]) -> int:
 def evaluate_suitability(
     dest: Dict[str, Any],
     profile: Optional[TravelProfile]
-) -> Tuple[Optional[int], str, List[SuitabilityFactor], List[str], List[str], List[str]]:
+) -> Tuple[Optional[int], str, ScoreBreakdown, List[SuitabilityFactor], List[str], List[str], List[str]]:
     """
     Explainable Suitability Engine:
     Compares verified destination attributes against user profile.
     Returns:
     - suitability_score (0-100 or None if insufficient info)
     - suitability_label
+    - score_breakdown (ScoreBreakdown model)
     - factors list
     - how_well_it_matches_you list
     - what_could_be_difficult list
@@ -49,11 +56,15 @@ def evaluate_suitability(
     difficulties: List[str] = []
     verify_items: List[str] = []
 
-    # If no profile was provided, default to a neutral, informative assessment
     if not profile:
         profile = TravelProfile()
 
-    # Total score calculation with baseline
+    # Sub-scores initialization (0-100)
+    accessibility_sub = 80
+    walking_sub = 75
+    schedule_sub = 85
+    interest_sub = 70
+
     base_score = 50.0
     total_delta = 0.0
     hard_block = False
@@ -68,18 +79,20 @@ def evaluate_suitability(
         if step_free == "Full":
             impact = 25.0
             total_delta += impact
+            accessibility_sub = 98
             factors.append(SuitabilityFactor(
                 criterion="Step-Free Access (Mandatory)",
                 status="match",
                 importance="Hard Requirement",
                 weight=30.0,
                 score_impact=impact,
-                explanation="Confirmed full step-free access available across all main public visit areas."
+                explanation="Confirmed full step-free access available across all main visitor areas."
             ))
             matches.append("Confirmed step-free access: Ramps or level pathways cover the primary visitor route.")
         elif step_free == "Good":
             impact = 20.0
             total_delta += impact
+            accessibility_sub = 88
             factors.append(SuitabilityFactor(
                 criterion="Step-Free Access (Mandatory)",
                 status="match",
@@ -92,6 +105,7 @@ def evaluate_suitability(
         elif step_free == "Partial":
             impact = -10.0
             total_delta += impact
+            accessibility_sub = 55
             factors.append(SuitabilityFactor(
                 criterion="Step-Free Access (Mandatory)",
                 status="partial",
@@ -102,10 +116,11 @@ def evaluate_suitability(
             ))
             difficulties.append(f"Partial step-free access limitation: {stairs_info.get('details', 'Certain key areas require climbing stairs.')}")
             verify_items.append("Confirm with venue staff if wheelchair loan and plinth ramp assistance will be available on your visit date.")
-        elif step_free == "Limited" or step_free == "Challenging":
+        elif step_free in ["Limited", "Challenging"]:
             impact = -40.0
             total_delta += impact
             hard_block = True
+            accessibility_sub = 15
             factors.append(SuitabilityFactor(
                 criterion="Step-Free Access (Mandatory)",
                 status="mismatch",
@@ -116,7 +131,8 @@ def evaluate_suitability(
             ))
             difficulties.append(f"Strict Mobility Mismatch: You specified step-free access as a requirement, but this destination features: {stairs_info.get('details', 'steep terrain or stairs without elevators')}.")
             verify_items.append("Consider an alternative accessible destination or verify if a vehicle-only perimeter view meets your needs.")
-        else: # Unverified
+        else:
+            accessibility_sub = 50
             factors.append(SuitabilityFactor(
                 criterion="Step-Free Access (Mandatory)",
                 status="unverified",
@@ -127,6 +143,14 @@ def evaluate_suitability(
             ))
             difficulties.append("Accessibility status unverified: We cannot confirm whether step-free access is supported.")
             verify_items.append("Directly contact the destination authority to confirm step-free entrances before traveling.")
+    else:
+        # Standard accessibility assessment
+        if step_free in ["Full", "Good"]:
+            accessibility_sub = 95
+        elif step_free == "Partial":
+            accessibility_sub = 75
+        else:
+            accessibility_sub = 60
 
     # 2. Minimizing Stairs (Soft Preference)
     if profile.minimize_stairs and not profile.step_free_required:
@@ -135,6 +159,7 @@ def evaluate_suitability(
         if not has_stairs or has_lift:
             impact = 12.0
             total_delta += impact
+            accessibility_sub = min(accessibility_sub + 15, 100)
             factors.append(SuitabilityFactor(
                 criterion="Stairs Minimization",
                 status="match",
@@ -147,6 +172,7 @@ def evaluate_suitability(
         else:
             impact = -12.0
             total_delta += impact
+            accessibility_sub = max(accessibility_sub - 20, 20)
             factors.append(SuitabilityFactor(
                 criterion="Stairs Minimization",
                 status="partial",
@@ -164,9 +190,9 @@ def evaluate_suitability(
     user_time = profile.available_time_hours or 3.0
 
     if user_time < (est_hours - 0.75):
-        # User has substantially less time than typical visit requires
         impact = -15.0
         total_delta += impact
+        schedule_sub = 40
         factors.append(SuitabilityFactor(
             criterion="Visit Duration vs Available Time",
             status="mismatch",
@@ -180,6 +206,7 @@ def evaluate_suitability(
     elif user_time >= est_hours:
         impact = 15.0
         total_delta += impact
+        schedule_sub = 95
         factors.append(SuitabilityFactor(
             criterion="Visit Duration vs Available Time",
             status="match",
@@ -192,6 +219,7 @@ def evaluate_suitability(
     else:
         impact = 5.0
         total_delta += impact
+        schedule_sub = 75
         factors.append(SuitabilityFactor(
             criterion="Visit Duration vs Available Time",
             status="partial",
@@ -212,6 +240,7 @@ def evaluate_suitability(
         if "Minimal" in walk_intensity:
             impact = 15.0
             total_delta += impact
+            walking_sub = 95
             factors.append(SuitabilityFactor(
                 criterion="Walking Requirements",
                 status="match",
@@ -224,6 +253,7 @@ def evaluate_suitability(
         elif "Moderate" in walk_intensity:
             impact = -5.0
             total_delta += impact
+            walking_sub = 65
             factors.append(SuitabilityFactor(
                 criterion="Walking Requirements",
                 status="partial",
@@ -235,9 +265,10 @@ def evaluate_suitability(
             difficulties.append(f"Walking distance: Typical circuit involves approx {walk_dist} km ({walk_info.get('surface', 'paved walkways')}).")
             if walk_info.get("shuttle_info"):
                 matches.append(f"Shuttle assistance: {walk_info.get('shuttle_info')}")
-        else: # High / Very High / Strenuous
+        else:
             impact = -20.0
             total_delta += impact
+            walking_sub = 30
             factors.append(SuitabilityFactor(
                 criterion="Walking Requirements",
                 status="mismatch",
@@ -252,6 +283,7 @@ def evaluate_suitability(
         if "High" in walk_intensity or "Strenuous" in walk_intensity:
             impact = 12.0
             total_delta += impact
+            walking_sub = 95
             factors.append(SuitabilityFactor(
                 criterion="Walking Requirements",
                 status="match",
@@ -264,6 +296,7 @@ def evaluate_suitability(
         else:
             impact = 6.0
             total_delta += impact
+            walking_sub = 75
             factors.append(SuitabilityFactor(
                 criterion="Walking Requirements",
                 status="partial",
@@ -272,9 +305,10 @@ def evaluate_suitability(
                 score_impact=impact,
                 explanation=f"Walking is modest (~{walk_dist} km), though you prefer high activity."
             ))
-    else: # Moderate or Any
+    else:
         impact = 10.0
         total_delta += impact
+        walking_sub = 85
         factors.append(SuitabilityFactor(
             criterion="Walking Requirements",
             status="match",
@@ -299,6 +333,7 @@ def evaluate_suitability(
     if matched_interests:
         interest_impact = min(len(matched_interests) * 7.0, 20.0)
         total_delta += interest_impact
+        interest_sub = min(60 + len(matched_interests) * 15, 100)
         factors.append(SuitabilityFactor(
             criterion="Interests Alignment",
             status="match",
@@ -309,6 +344,7 @@ def evaluate_suitability(
         ))
         matches.append(f"Interest match: Strongly aligns with your interest in {', '.join(matched_interests)}.")
     elif user_interests:
+        interest_sub = 50
         factors.append(SuitabilityFactor(
             criterion="Interests Alignment",
             status="neutral",
@@ -338,6 +374,7 @@ def evaluate_suitability(
         elif "Caution" in str(senior_fit) or "Low" in str(senior_fit):
             impact = -20.0
             total_delta += impact
+            accessibility_sub = max(accessibility_sub - 25, 20)
             factors.append(SuitabilityFactor(
                 criterion="Pace & Senior Suitability",
                 status="mismatch",
@@ -349,15 +386,6 @@ def evaluate_suitability(
             difficulties.append(f"Pacing challenge: Destination environment is rated '{senior_fit}' for seniors/slower pace travelers due to altitude, heat, or rugged terrain.")
             verify_items.append("Consult medical advice if high altitude or extreme climate applies; verify resting pavilion availability.")
         else:
-            impact = 0.0
-            factors.append(SuitabilityFactor(
-                criterion="Pace & Senior Suitability",
-                status="partial",
-                importance="Medium Preference",
-                weight=10.0,
-                score_impact=impact,
-                explanation=f"Moderate suitability for slower-paced visits ({senior_fit})."
-            ))
             matches.append("Pace: Achievable at a slower pace with planned rest breaks.")
 
     # 7. Traveling with Children
@@ -415,21 +443,20 @@ def evaluate_suitability(
                 else:
                     difficulties.append("No elevators available in this historical structure.")
 
-    # 9. Verified Disruptions check
-    disruptions = dest.get("verified_disruptions", [])
-    for dis in disruptions:
+    # 9. Verified Disruptions
+    for dis in dest.get("verified_disruptions", []):
         if dis.get("status") == "Active":
             difficulties.append(f"Verified Alert: [{dis.get('type')}] {dis.get('title')} - {dis.get('detail')}")
             verify_items.append(f"Check latest status of: {dis.get('title')}")
 
-    # 10. Always add unverified aspects to checklist
+    # 10. Unverified aspects
     for unv in dest.get("unverified_aspects", []):
         verify_items.append(f"Verify locally: {unv}")
 
     # Compute final numerical score
     raw_score = base_score + total_delta
     if hard_block:
-        final_score = min(int(round(raw_score)), 38) # Cap if hard constraint failed
+        final_score = min(int(round(raw_score)), 38)
     else:
         final_score = min(max(int(round(raw_score)), 10), 99)
 
@@ -445,8 +472,15 @@ def evaluate_suitability(
     else:
         label = "Significant Mismatch"
 
-    return final_score, label, factors, matches, difficulties, verify_items
+    breakdown = ScoreBreakdown(
+        accessibility_score=accessibility_sub,
+        walking_score=walking_sub,
+        schedule_score=schedule_sub,
+        interest_fit_score=interest_sub,
+        overall_suitability=final_score
+    )
 
+    return final_score, label, breakdown, factors, matches, difficulties, verify_items
 
 def find_alternative_destinations(
     current_dest_id: str,
@@ -463,12 +497,11 @@ def find_alternative_destinations(
     if not current_dest:
         return []
 
-    # Score each other destination against user profile
     candidates = []
     for other in all_destinations:
         if other["id"] == current_dest_id:
             continue
-        score, label, factors, matches, diffs, _ = evaluate_suitability(other, profile)
+        score, label, _, factors, matches, diffs, _ = evaluate_suitability(other, profile)
         comp = other.get("data_completeness_score", 90)
         candidates.append({
             "dest": other,
@@ -479,10 +512,8 @@ def find_alternative_destinations(
             "completeness": comp
         })
 
-    # Sort candidates by suitability score, then by data completeness
     candidates.sort(key=lambda x: (x["score"], x["completeness"]), reverse=True)
 
-    # Pick top 2-3 candidates that solve current destination's weaknesses
     for cand in candidates[:3]:
         d = cand["dest"]
         reasons = []

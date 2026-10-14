@@ -1,12 +1,20 @@
+"""
+WayWise AI - FastAPI Application Entrypoint.
+Provides production-grade REST endpoints, in-memory caching for sub-millisecond lookups,
+GZip response compression, security headers, and static SPA serving.
+"""
+
 import os
 import json
 import uuid
+import logging
 from datetime import datetime
 from typing import List, Optional, Dict, Any
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query, Body, Request
+from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
 
@@ -16,12 +24,14 @@ from .models import (
     RealityCheckResult,
     CompareRequest,
     CommunityReportCreate,
-    CommunityReportUpdateStatus,
-    AlternativeSuggestion
+    CommunityReportUpdateStatus
 )
 from .engine import evaluate_suitability, calculate_completeness_score, find_alternative_destinations
 from .gemini_service import generate_gemini_reality_report
 from .weather_service import fetch_destination_weather
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
+logger = logging.getLogger("waywise.app")
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
@@ -30,12 +40,17 @@ REPORTS_FILE = DATA_DIR / "reports.json"
 STATIC_DIR = BASE_DIR.parent / "static"
 
 app = FastAPI(
-    title="TravelReality AI",
+    title="WayWise AI",
     description="Evidence-grounded destination intelligence & personalized travel decision support - Know Before You Go.",
-    version="1.0.0"
+    version="2.0.0",
+    docs_url="/api/docs",
+    redoc_url="/api/redoc"
 )
 
-# Enable CORS for local testing and flex
+# 1. Performance: GZip Compression Middleware (compresses responses > 1KB)
+app.add_middleware(GZipMiddleware, minimum_size=1000)
+
+# 2. CORS Middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -44,37 +59,69 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-def load_destinations() -> List[Dict[str, Any]]:
-    if not DESTINATIONS_FILE.exists():
-        return []
-    with open(DESTINATIONS_FILE, "r", encoding="utf-8") as f:
-        destinations = json.load(f)
-    # Ensure completeness scores are fresh
-    for d in destinations:
-        if "data_completeness_score" not in d:
-            d["data_completeness_score"] = calculate_completeness_score(d)
-    return destinations
+# 3. Security Headers Middleware
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response: Response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
+    return response
 
-def load_reports() -> List[Dict[str, Any]]:
-    if not REPORTS_FILE.exists():
-        return []
-    with open(REPORTS_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+# In-Memory High Efficiency Cache
+_DESTINATIONS_CACHE: List[Dict[str, Any]] = []
+_DESTINATIONS_MAP: Dict[str, Dict[str, Any]] = {}
+_REPORTS_CACHE: List[Dict[str, Any]] = []
+_APP_START_TIME = datetime.utcnow()
 
-def save_reports(reports: List[Dict[str, Any]]) -> None:
-    with open(REPORTS_FILE, "w", encoding="utf-8") as f:
-        json.dump(reports, f, indent=2, ensure_ascii=False)
+def _load_data_into_memory():
+    global _DESTINATIONS_CACHE, _DESTINATIONS_MAP, _REPORTS_CACHE
+    if DESTINATIONS_FILE.exists():
+        with open(DESTINATIONS_FILE, "r", encoding="utf-8") as f:
+            _DESTINATIONS_CACHE = json.load(f)
+        for d in _DESTINATIONS_CACHE:
+            if "data_completeness_score" not in d:
+                d["data_completeness_score"] = calculate_completeness_score(d)
+            _DESTINATIONS_MAP[d["id"]] = d
+        logger.info("Loaded %d destinations into in-memory cache.", len(_DESTINATIONS_CACHE))
+
+    if REPORTS_FILE.exists():
+        with open(REPORTS_FILE, "r", encoding="utf-8") as f:
+            _REPORTS_CACHE = json.load(f)
+        logger.info("Loaded %d community reports into memory.", len(_REPORTS_CACHE))
+
+_load_data_into_memory()
+
+def save_reports_to_disk() -> None:
+    try:
+        with open(REPORTS_FILE, "w", encoding="utf-8") as f:
+            json.dump(_REPORTS_CACHE, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        logger.error("Failed to persist community reports to disk: %s", e)
+
+# Standardized Error Handlers
+@app.exception_handler(HTTPException)
+async def custom_http_exception_handler(request: Request, exc: HTTPException):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"error": True, "detail": exc.detail, "status_code": exc.status_code}
+    )
 
 @app.get("/api/health")
 def health_check():
-    dests = load_destinations()
-    reps = load_reports()
+    """System health check and diagnostic endpoint."""
+    uptime_seconds = (datetime.utcnow() - _APP_START_TIME).total_seconds()
     return {
         "status": "healthy",
-        "app_name": "TravelReality AI",
+        "app_name": "WayWise AI",
         "tagline": "Know Before You Go.",
-        "destinations_count": len(dests),
-        "reports_count": len(reps),
+        "version": "2.0.0",
+        "destinations_count": len(_DESTINATIONS_CACHE),
+        "reports_count": len(_REPORTS_CACHE),
+        "uptime_seconds": round(uptime_seconds, 1),
+        "caching_active": True,
         "timestamp": datetime.utcnow().isoformat() + "Z"
     }
 
@@ -88,9 +135,9 @@ def list_destinations(
 ):
     """
     Search and filter destinations with factual attributes and completeness score.
+    Runs against in-memory index for sub-millisecond latency.
     """
-    destinations = load_destinations()
-    results = destinations
+    results = list(_DESTINATIONS_CACHE)
 
     if search:
         s = search.lower().strip()
@@ -134,24 +181,28 @@ def list_destinations(
 
 @app.get("/api/destinations/{dest_id}")
 def get_destination(dest_id: str):
-    destinations = load_destinations()
-    dest = next((d for d in destinations if d["id"] == dest_id), None)
+    """Retrieves full destination details via $O(1)$ memory lookup."""
+    dest = _DESTINATIONS_MAP.get(dest_id)
     if not dest:
-        raise HTTPException(status_code=404, detail="Destination not found")
+        raise HTTPException(status_code=404, detail=f"Destination '{dest_id}' not found")
     return dest
 
 @app.post("/api/reality-check", response_model=RealityCheckResult)
 async def perform_reality_check(req: RealityCheckRequest):
-    destinations = load_destinations()
-    dest = next((d for d in destinations if d["id"] == req.destination_id), None)
+    """
+    Executes a personalized Destination Reality Check.
+    Compares verified ground facts against traveler preferences,
+    evaluating hard mobility constraints, walking intensity, and unknowns.
+    """
+    dest = _DESTINATIONS_MAP.get(req.destination_id)
     if not dest:
-        raise HTTPException(status_code=404, detail="Destination not found")
+        raise HTTPException(status_code=404, detail=f"Destination '{req.destination_id}' not found")
 
     # 1. Run Explainable Suitability Engine
-    score, label, factors, matches, difficulties, verify_items = evaluate_suitability(dest, req.profile)
+    score, label, breakdown, factors, matches, difficulties, verify_items = evaluate_suitability(dest, req.profile)
 
-    # 2. Find Alternative Suggestions if there are difficulties or mismatches
-    alternatives = find_alternative_destinations(req.destination_id, destinations, req.profile, score)
+    # 2. Find Alternative Suggestions if there are constraints or barriers
+    alternatives = find_alternative_destinations(req.destination_id, _DESTINATIONS_CACHE, req.profile, score)
 
     # 3. Generate Gemini AI report or Deterministic fallback
     result = await generate_gemini_reality_report(
@@ -159,6 +210,7 @@ async def perform_reality_check(req: RealityCheckRequest):
         profile=req.profile,
         suitability_score=score,
         suitability_label=label,
+        score_breakdown=breakdown,
         factors=factors,
         matches=matches,
         difficulties=difficulties,
@@ -171,20 +223,22 @@ async def perform_reality_check(req: RealityCheckRequest):
 
 @app.post("/api/compare")
 def compare_destinations(req: CompareRequest):
+    """
+    Side-by-side comparison for up to 3 destinations.
+    Highlights user-critical criteria (step-free access, walking distance, duration).
+    """
     if not req.destination_ids:
         raise HTTPException(status_code=400, detail="Provide at least 1 destination to compare")
     if len(req.destination_ids) > 3:
         raise HTTPException(status_code=400, detail="Maximum 3 destinations can be compared side-by-side")
 
-    destinations = load_destinations()
-    selected = [d for d in destinations if d["id"] in req.destination_ids]
-
+    selected = [_DESTINATIONS_MAP[did] for did in req.destination_ids if did in _DESTINATIONS_MAP]
     if not selected:
         raise HTTPException(status_code=404, detail="None of the specified destinations were found")
 
     comparison_items = []
     for d in selected:
-        score, label, factors, matches, difficulties, verify_items = evaluate_suitability(d, req.profile)
+        score, label, breakdown, factors, matches, difficulties, verify_items = evaluate_suitability(d, req.profile)
         p = d.get("practical_info", {})
         access = p.get("accessibility", {})
         walk = p.get("walking_requirements", {})
@@ -201,6 +255,7 @@ def compare_destinations(req: CompareRequest):
             "image_url": d["image_url"],
             "suitability_score": score,
             "suitability_label": label,
+            "score_breakdown": breakdown.dict(),
             "data_completeness": d.get("data_completeness_score", 90),
             "step_free_access": access.get("step_free_access", "Unverified"),
             "stairs_details": access.get("stairs", {}).get("details", "Not specified"),
@@ -230,8 +285,8 @@ def compare_destinations(req: CompareRequest):
 
 @app.get("/api/weather/{dest_id}")
 async def get_weather(dest_id: str, visit_date: Optional[str] = None):
-    destinations = load_destinations()
-    dest = next((d for d in destinations if d["id"] == dest_id), None)
+    """Retrieves live meteorological data from Open-Meteo with in-memory TTL caching."""
+    dest = _DESTINATIONS_MAP.get(dest_id)
     if not dest:
         raise HTTPException(status_code=404, detail="Destination not found")
 
@@ -258,13 +313,12 @@ def get_reports(
     Returns community destination condition reports.
     Clearly distinguishes unverified from verified status.
     """
-    reports = load_reports()
+    reports = list(_REPORTS_CACHE)
     if destination_id:
         reports = [r for r in reports if r.get("destination_id") == destination_id]
     if status and status != "all":
         reports = [r for r in reports if r.get("verification_status") == status]
 
-    # Sort descending by reported date
     reports.sort(key=lambda x: x.get("reported_at", ""), reverse=True)
     return {
         "total": len(reports),
@@ -277,27 +331,25 @@ def submit_community_report(report_in: CommunityReportCreate):
     User submits a community observation.
     Saved initially as 'unverified'. Does not fabricate or overwrite verified facts.
     """
-    destinations = load_destinations()
-    dest = next((d for d in destinations if d["id"] == report_in.destination_id), None)
+    dest = _DESTINATIONS_MAP.get(report_in.destination_id)
     if not dest:
         raise HTTPException(status_code=404, detail="Destination not found")
 
-    reports = load_reports()
     new_report = {
         "id": f"rep-{uuid.uuid4().hex[:6]}",
         "destination_id": dest["id"],
         "destination_name": dest["name"],
         "category": report_in.category,
-        "title": report_in.title.strip(),
-        "description": report_in.description.strip(),
+        "title": report_in.title,
+        "description": report_in.description,
         "reported_at": datetime.utcnow().isoformat() + "Z",
         "reported_by": report_in.reported_by or "Anonymous Traveler",
         "verification_status": "unverified",
         "admin_notes": "Submitted via Community Portal. Pending verification."
     }
 
-    reports.insert(0, new_report)
-    save_reports(reports)
+    _REPORTS_CACHE.insert(0, new_report)
+    save_reports_to_disk()
     return {
         "message": "Community condition report submitted. Marked as 'unverified' until reviewed.",
         "report": new_report
@@ -308,10 +360,9 @@ def update_report_status(report_id: str, payload: CommunityReportUpdateStatus):
     """
     Admin moderation workflow: verify, reject, or mark under review.
     """
-    reports = load_reports()
-    report = next((r for r in reports if r["id"] == report_id), None)
+    report = next((r for r in _REPORTS_CACHE if r["id"] == report_id), None)
     if not report:
-        raise HTTPException(status_code=404, detail="Report not found")
+        raise HTTPException(status_code=404, detail=f"Report '{report_id}' not found")
 
     valid_statuses = ["unverified", "under_review", "verified", "rejected", "expired"]
     if payload.verification_status not in valid_statuses:
@@ -322,9 +373,9 @@ def update_report_status(report_id: str, payload: CommunityReportUpdateStatus):
         report["admin_notes"] = payload.admin_notes
     report["last_moderated_at"] = datetime.utcnow().isoformat() + "Z"
 
-    save_reports(reports)
+    save_reports_to_disk()
     return {
-        "message": f"Report {report_id} status updated to {payload.verification_status}",
+        "message": f"Report '{report_id}' status updated to {payload.verification_status}",
         "report": report
     }
 

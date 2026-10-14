@@ -1,12 +1,19 @@
-import httpx
-import logging
-from typing import Dict, Any, Optional
-from datetime import datetime
+"""
+Weather Service Module for WayWise AI.
+Provides real-time and 7-day meteorological forecast data via Open-Meteo API
+with in-memory TTL caching for optimal efficiency and network minimization.
+"""
 
-logger = logging.getLogger("travelreality.weather")
+import time
+import logging
+from typing import Dict, Any, Optional, Tuple
+from datetime import datetime
+import httpx
+
+logger = logging.getLogger("waywise.weather")
 
 # WMO Weather interpretation codes
-WEATHER_CODES = {
+WEATHER_CODES: Dict[int, str] = {
     0: "Clear sky",
     1: "Mainly clear",
     2: "Partly cloudy",
@@ -30,11 +37,48 @@ WEATHER_CODES = {
     99: "Thunderstorm with heavy hail"
 }
 
-async def fetch_destination_weather(latitude: float, longitude: float, visit_date: Optional[str] = None) -> Dict[str, Any]:
+# In-memory TTL Cache: (rounded_lat, rounded_lon) -> (timestamp, data)
+# Cache duration: 15 minutes (900 seconds)
+_WEATHER_CACHE: Dict[Tuple[float, float], Tuple[float, Dict[str, Any]]] = {}
+_CACHE_TTL_SECONDS: float = 900.0
+
+def get_cached_weather(lat: float, lon: float) -> Optional[Dict[str, Any]]:
+    """Retrieve unexpired weather data from memory cache if available."""
+    key = (round(lat, 3), round(lon, 3))
+    if key in _WEATHER_CACHE:
+        timestamp, data = _WEATHER_CACHE[key]
+        if time.time() - timestamp < _CACHE_TTL_SECONDS:
+            logger.debug("Weather cache hit for %s", key)
+            cached_copy = dict(data)
+            cached_copy["cache_hit"] = True
+            return cached_copy
+        else:
+            del _WEATHER_CACHE[key]
+    return None
+
+def set_cached_weather(lat: float, lon: float, data: Dict[str, Any]) -> None:
+    """Store fresh weather response in memory cache."""
+    key = (round(lat, 3), round(lon, 3))
+    # Cap cache size to prevent memory bloat
+    if len(_WEATHER_CACHE) > 500:
+        _WEATHER_CACHE.clear()
+    _WEATHER_CACHE[key] = (time.time(), data)
+
+async def fetch_destination_weather(
+    latitude: float,
+    longitude: float,
+    visit_date: Optional[str] = None
+) -> Dict[str, Any]:
     """
     Fetches real-time and 7-day forecast data from Open-Meteo for given coordinates.
-    Gracefully handles network drops, invalid coordinates, or far-future dates.
+    Employs an in-memory TTL cache to minimize external network requests.
+    Gracefully handles network drops, invalid coordinates, or dates beyond forecast range.
     """
+    # Check cache first for high efficiency
+    cached = get_cached_weather(latitude, longitude)
+    if cached:
+        return cached
+
     url = "https://api.open-meteo.com/v1/forecast"
     params = {
         "latitude": latitude,
@@ -78,14 +122,18 @@ async def fetch_destination_weather(latitude: float, longitude: float, visit_dat
                         today = datetime.now()
                         delta_days = (v_dt.date() - today.date()).days
                         if delta_days > 7:
-                            date_notice = f"Selected date ({visit_date}) is beyond the 7-day meteorological forecast horizon. Showing standard seasonal climate guidance instead of speculative daily forecast."
+                            date_notice = (
+                                f"Selected visit date ({visit_date}) is beyond the 7-day meteorological "
+                                f"forecast horizon. Showing current seasonal reference."
+                            )
                     except Exception:
                         pass
 
-                return {
+                result = {
                     "status": "success",
                     "provider": "Open-Meteo Meteorological Forecast API",
                     "last_updated": datetime.utcnow().isoformat() + "Z",
+                    "cache_hit": False,
                     "current": {
                         "temperature_c": current.get("temperature_2m"),
                         "apparent_temperature_c": current.get("apparent_temperature"),
@@ -97,14 +145,19 @@ async def fetch_destination_weather(latitude: float, longitude: float, visit_dat
                     "forecast": forecast_days,
                     "date_notice": date_notice
                 }
-    except Exception as e:
-        logger.warning(f"Could not connect to Open-Meteo API ({e}). Providing local verified climate guidance.")
 
-    # Offline / network fallback with grounded seasonal context
+                # Save to cache
+                set_cached_weather(latitude, longitude, result)
+                return result
+    except Exception as e:
+        logger.warning("Could not connect to Open-Meteo API (%s). Falling back to offline climate reference.", e)
+
+    # Offline fallback response
     return {
         "status": "offline_fallback",
-        "provider": "TravelReality Offline Climate Reference (Open-Meteo unavailable)",
+        "provider": "WayWise Offline Climate Reference (Open-Meteo currently unreachable)",
         "last_updated": datetime.utcnow().isoformat() + "Z",
+        "cache_hit": False,
         "current": {
             "temperature_c": None,
             "apparent_temperature_c": None,

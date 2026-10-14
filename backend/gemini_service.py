@@ -1,16 +1,30 @@
+"""
+Gemini Service Module for WayWise AI.
+Dual-mode synthesis engine combining live Google Gemini AI with a robust,
+deterministic rule-based fallback when offline or without an API key.
+"""
+
 import os
 import json
 import logging
-from typing import Dict, Any, Optional, List, Tuple
-from .models import TravelProfile, RealityCheckResult, AlternativeSuggestion, SuitabilityFactor
+from typing import Dict, Any, Optional, List
+import httpx
+from .models import (
+    TravelProfile,
+    RealityCheckResult,
+    AlternativeSuggestion,
+    SuitabilityFactor,
+    ScoreBreakdown
+)
 
-logger = logging.getLogger("travelreality.ai")
+logger = logging.getLogger("waywise.ai")
 
 def build_deterministic_synthesis(
     dest: Dict[str, Any],
     profile: Optional[TravelProfile],
     suitability_score: Optional[int],
     suitability_label: str,
+    score_breakdown: ScoreBreakdown,
     factors: List[SuitabilityFactor],
     matches: List[str],
     difficulties: List[str],
@@ -25,7 +39,6 @@ def build_deterministic_synthesis(
     dest_name = dest.get("name", "Destination")
     completeness = dest.get("data_completeness_score", 90)
 
-    # Compile structured "What We Know" facts
     what_we_know = [
         {
             "category": "Hours & Schedule",
@@ -66,7 +79,6 @@ def build_deterministic_synthesis(
         }
     ]
 
-    # Synthesize concise, evidence-grounded summary text
     profile_summary = []
     if profile:
         if profile.step_free_required:
@@ -96,6 +108,7 @@ def build_deterministic_synthesis(
         suitability_score=suitability_score,
         suitability_label=suitability_label,
         completeness_score=completeness,
+        score_breakdown=score_breakdown,
         engine_mode="deterministic_rule_engine",
         overall_synthesis=overall_text,
         what_we_know=what_we_know,
@@ -114,6 +127,7 @@ async def generate_gemini_reality_report(
     profile: Optional[TravelProfile],
     suitability_score: Optional[int],
     suitability_label: str,
+    score_breakdown: ScoreBreakdown,
     factors: List[SuitabilityFactor],
     matches: List[str],
     difficulties: List[str],
@@ -130,11 +144,10 @@ async def generate_gemini_reality_report(
     if not active_key:
         logger.info("No Gemini API key provided. Using deterministic rule-based engine.")
         return build_deterministic_synthesis(
-            dest, profile, suitability_score, suitability_label,
+            dest, profile, suitability_score, suitability_label, score_breakdown,
             factors, matches, difficulties, verify_items, alternatives
         )
 
-    # Construct strict factual prompt for Gemini
     prompt_payload = {
         "destination_name": dest.get("name"),
         "country_and_city": f"{dest.get('city')}, {dest.get('country')}",
@@ -147,15 +160,16 @@ async def generate_gemini_reality_report(
         "calculated_suitability": {
             "score": suitability_score,
             "label": suitability_label,
+            "breakdown": score_breakdown.dict(),
             "factors": [f.dict() for f in factors]
         }
     }
 
     system_instruction = (
-        "You are the Core Intelligence Engine of TravelReality AI ('Know Before You Go'). "
+        "You are the Core Intelligence Engine of WayWise AI ('Know Before You Go'). "
         "Your duty is evidence-based, personalized travel decision support. "
         "CRITICAL RULES: "
-        "1. NEVER invent or hallucinate opening hours, facilities, accessibility features, or conditions. "
+        "1. NEVER invent opening hours, facilities, accessibility features, or conditions. "
         "2. If an attribute is missing or unverified, state it as unverified. "
         "3. Provide personalized analysis comparing the destination's confirmed attributes with the traveler's stated profile. "
         "4. Output MUST be valid JSON conforming strictly to the requested schema."
@@ -174,7 +188,6 @@ async def generate_gemini_reality_report(
     )
 
     try:
-        import httpx
         url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={active_key}"
         headers = {"Content-Type": "application/json"}
         body = {
@@ -192,7 +205,6 @@ async def generate_gemini_reality_report(
         async with httpx.AsyncClient(timeout=12.0) as client:
             response = await client.post(url, headers=headers, json=body)
             if response.status_code != 200:
-                # Try fallback model gemini-1.5-flash
                 url_fallback = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={active_key}"
                 response = await client.post(url_fallback, headers=headers, json=body)
 
@@ -202,17 +214,17 @@ async def generate_gemini_reality_report(
                 parsed = json.loads(candidate_text)
 
                 base_result = build_deterministic_synthesis(
-                    dest, profile, suitability_score, suitability_label,
+                    dest, profile, suitability_score, suitability_label, score_breakdown,
                     factors, matches, difficulties, verify_items, alternatives
                 )
 
-                # Overlay verified Gemini enhancements
                 return RealityCheckResult(
                     destination_id=base_result.destination_id,
                     destination_name=base_result.destination_name,
                     suitability_score=base_result.suitability_score,
                     suitability_label=base_result.suitability_label,
                     completeness_score=base_result.completeness_score,
+                    score_breakdown=base_result.score_breakdown,
                     engine_mode="gemini_ai",
                     overall_synthesis=parsed.get("overall_synthesis", base_result.overall_synthesis),
                     what_we_know=base_result.what_we_know,
@@ -226,12 +238,11 @@ async def generate_gemini_reality_report(
                     official_sources=base_result.official_sources
                 )
             else:
-                logger.warning(f"Gemini API returned status {response.status_code}: {response.text}")
+                logger.warning("Gemini API returned status %s: %s", response.status_code, response.text)
     except Exception as e:
-        logger.warning(f"Error querying Gemini API ({e}). Falling back to deterministic engine.")
+        logger.warning("Error querying Gemini API (%s). Falling back to deterministic engine.", e)
 
-    # Fallback to deterministic synthesis on any failure
     return build_deterministic_synthesis(
-        dest, profile, suitability_score, suitability_label,
+        dest, profile, suitability_score, suitability_label, score_breakdown,
         factors, matches, difficulties, verify_items, alternatives
     )
