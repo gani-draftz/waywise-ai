@@ -1,0 +1,1768 @@
+[
+  {
+    "id": "taj-mahal",
+    "name": "Taj Mahal",
+    "tagline": "17th-century white marble mausoleum and UNESCO World Heritage Site",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Agra",
+    "coordinates": { "latitude": 27.1751, "longitude": 78.0421 },
+    "category": "Historical & Heritage",
+    "tags": ["UNESCO World Heritage", "Mughal Architecture", "Monuments", "Iconic"],
+    "image_url": "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1000&q=80",
+    "description": "Commissioned in 1631 by Mughal Emperor Shah Jahan for his wife Mumtaz Mahal. Built with ivory-white marble on the south bank of the Yamuna River, featuring extensive Mughal gardens and reflecting pools.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "Sunrise to Sunset (Approx. 06:00 to 18:30)",
+        "closed_days": ["Friday (Open only for registered Friday prayers at Mosque)"],
+        "source": "Archaeological Survey of India (ASI) Official Agra Circle",
+        "last_verified": "2026-09-10"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "domestic": 50,
+        "foreign": 1100,
+        "saarc_bimstec": 540,
+        "additional_main_mausoleum": 200,
+        "children_under_15": "Free entry with zero-value online ticket",
+        "ticketing_mode": "Online only via ASI portal (No physical cash counter at gates)",
+        "source": "ASI Online Ticketing Portal (asi.nic.in)",
+        "last_verified": "2026-09-10"
+      },
+      "visit_duration": {
+        "estimated_hours": 2.5,
+        "range_min": 1.5,
+        "range_max": 3.5,
+        "basis": "Security line (15-30m), garden stroll, plinth visit, shoe-cover queues, and exit."
+      },
+      "walking_requirements": {
+        "intensity": "Moderate",
+        "estimated_distance_km": 2.0,
+        "surface": "Polished red sandstone pathways, marble plinth, garden paved walks",
+        "shuttle_info": "Pollution Free Zone (500m radius): Private vehicles must park at Shilpgram (East) or Amrud Ka Tila (West). Electric golf carts and CNG shuttles run to ticket gates for ₹20-50.",
+        "source": "Agra Development Authority TTZ Regulations",
+        "last_verified": "2026-08-15"
+      },
+      "accessibility": {
+        "step_free_access": "Partial",
+        "stairs": {
+          "has_stairs": true,
+          "details": "Ramps provide step-free access from Western Gate to outer courtyard and up to the main marble plinth. However, entering the inner cenotaph chamber requires ascending 22 steep steps or using an auxiliary metal ramp that can be congested.",
+          "source": "ASI Monument Accessibility Audit 2024-2025",
+          "last_verified": "2026-07-22"
+        },
+        "elevators": {
+          "available": false,
+          "details": "No elevators exist in this 17th-century heritage structure."
+        },
+        "wheelchairs": {
+          "available": true,
+          "cost": "Free of charge upon deposit of valid Government ID",
+          "location": "ASI Monument Office near West & East Gate entrance",
+          "details": "Grounds are paved and wheelchair accessible up to the plinth. Helper strongly recommended due to long courtyard distances."
+        },
+        "audio_guides": {
+          "available": true,
+          "languages": ["English", "Hindi", "French", "German", "Spanish", "Japanese"],
+          "source": "ASI Ministry of Tourism Audio Odigos App"
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": true,
+          "locations": ["Inside complex near Taj Museum (West garden)", "Outside entry gates near security"],
+          "cleanliness_standard": "Pay and use maintained by Sulabh International"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Water RO kiosks available near security gate; carrying a personal transparent water bottle (up to 1L) permitted."
+        },
+        "cloakroom_lockers": {
+          "available": true,
+          "rules": "Large backpacks, tripods, tobacco, and food items prohibited; lockers available at gate for nominal fee."
+        },
+        "parking": {
+          "available": true,
+          "location": "Shilpgram (East Gate Parking, 1 km away) or Amrud Ka Tila (West Gate Parking, 1.1 km away)",
+          "cost": "₹50 - ₹100 for four-wheelers",
+          "last_verified": "2026-08-10"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Agra Cantt Railway Station (approx. 5.5 km)",
+        "nearest_airport": "Agra Airport (Kheria AGR, 12 km) or Delhi IGI (230 km, 3.5 hrs via Yamuna Expressway)",
+        "local_transport": "Pre-paid auto-rickshaws, app cabs (Uber/Ola), electric feeder buses."
+      },
+      "crowd_profile": {
+        "typical_level": "Very High",
+        "peak_hours": "06:30 - 09:00 (Sunrise) and 15:30 - 18:00 (Sunset)",
+        "quietest_hours": "11:30 - 14:00 (Note: Marble floor gets hot in summer afternoons)"
+      },
+      "demographic_fit": {
+        "child_friendly": true,
+        "senior_friendly": "Moderate",
+        "mobility_friendly": "Moderate",
+        "budget_level": "Budget to Moderate"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "taj-disr-1",
+        "type": "Closure Notice",
+        "title": "Strict Friday Closure",
+        "detail": "Monument is completely closed for tourists every Friday. Only registered worshippers are allowed at the Mosque for afternoon prayers.",
+        "verified_by": "Archaeological Survey of India Notice",
+        "effective_dates": "Ongoing weekly",
+        "status": "Active"
+      },
+      {
+        "id": "taj-disr-2",
+        "type": "Security Restriction",
+        "title": "Drone and Tripod Ban",
+        "detail": "Cameras allowed, but tripods, drones, external microphones, and power banks over 20,000mAh are strictly confiscated at baggage scanner.",
+        "verified_by": "CISF Central Industrial Security Force",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Shoe cover dispenser wait times on holiday weekends (carry your own clean socks)",
+      "Night viewing slots (only 5 nights around full moon, tickets must be collected 24h prior in person at ASI Agra)"
+    ],
+    "data_completeness_score": 96,
+    "official_sources": [
+      { "name": "ASI Agra Circle", "url": "https://asiagracircle.in", "type": "Official Monument Custodian" },
+      { "name": "Uttar Pradesh Tourism", "url": "https://uptourism.gov.in", "type": "State Tourism Board" }
+    ]
+  },
+  {
+    "id": "qutub-minar",
+    "name": "Qutub Minar & Mehrauli Archaeological Complex",
+    "tagline": "73-meter victory tower and historic Delhi Sultanate monuments",
+    "country": "India",
+    "state": "Delhi",
+    "city": "New Delhi",
+    "coordinates": { "latitude": 28.5245, "longitude": 77.1855 },
+    "category": "Historical & Heritage",
+    "tags": ["UNESCO World Heritage", "Indo-Islamic", "Delhi Sultanate", "Garden Complex"],
+    "image_url": "https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&w=1000&q=80",
+    "description": "Begun in 1192 by Qutb-ud-din Aibak, the Qutub Minar is the world's tallest brick minaret. The complex includes the Quwwat-ul-Islam Mosque and the 4th-century rust-resistant Iron Pillar of Chandragupta II.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "07:00 to 21:00 (Illuminated heritage walk after sunset)",
+        "closed_days": ["Open 7 days a week"],
+        "source": "Delhi Circle, Archaeological Survey of India",
+        "last_verified": "2026-09-01"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "domestic": 35,
+        "foreign": 550,
+        "ticketing_mode": "Online via ASI website or on-site QR code scanner",
+        "source": "ASI Delhi Portal",
+        "last_verified": "2026-09-01"
+      },
+      "visit_duration": {
+        "estimated_hours": 1.5,
+        "range_min": 1.0,
+        "range_max": 2.5,
+        "basis": "Monument circuit, Quwwat-ul-Islam courtyard, Iron Pillar, and Ala'i Minar grounds."
+      },
+      "walking_requirements": {
+        "intensity": "Minimal to Moderate",
+        "estimated_distance_km": 1.0,
+        "surface": "Level stone walkways and paved grass lawn edges; well-maintained by ASI.",
+        "shuttle_info": "Not needed; entrance gate is within 50m of main drop-off point.",
+        "source": "Delhi Tourism Visit Guide",
+        "last_verified": "2026-08-01"
+      },
+      "accessibility": {
+        "step_free_access": "Good",
+        "stairs": {
+          "has_stairs": false,
+          "details": "Walkways throughout the lawn complex have gentle ramps. The interior staircase of the Minar itself has been permanently closed to all visitors since 1981 for safety.",
+          "source": "ASI Safety Regulations",
+          "last_verified": "2026-08-01"
+        },
+        "elevators": {
+          "available": false,
+          "details": "Ground-level open air monument; no elevators required or present."
+        },
+        "wheelchairs": {
+          "available": true,
+          "cost": "Free upon request at ticket verification gate",
+          "location": "Main ASI security cabin",
+          "details": "One of Delhi's most wheelchair-accessible historical heritage complexes with ramped transitions."
+        },
+        "audio_guides": {
+          "available": true,
+          "languages": ["English", "Hindi"],
+          "source": "Audio Odigos and ASI Signage QR"
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": true,
+          "locations": ["Inside complex near north boundary", "Entry plaza"],
+          "cleanliness_standard": "Regularly maintained municipal heritage facility"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Chilled filtered water taps available near garden pathway."
+        },
+        "cloakroom_lockers": {
+          "available": true,
+          "rules": "Cloakroom available at security counter for baggage."
+        },
+        "parking": {
+          "available": true,
+          "location": "Designated DMRC & ASI multi-level parking across the road (approx. 150m walking)",
+          "cost": "₹30 - ₹50",
+          "last_verified": "2026-08-15"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Hazrat Nizamuddin (14 km) / New Delhi (17 km)",
+        "nearest_airport": "Indira Gandhi International Airport (DEL, 11 km / 25 mins)",
+        "local_transport": "Delhi Metro Yellow Line (Qutab Minar Metro Station is 1.5 km away, feeder e-rickshaws ₹10-20 to gate)."
+      },
+      "crowd_profile": {
+        "typical_level": "Moderate",
+        "peak_hours": "16:00 - 19:00 (Especially during evening architectural illumination)",
+        "quietest_hours": "07:00 - 10:00"
+      },
+      "demographic_fit": {
+        "child_friendly": true,
+        "senior_friendly": "High",
+        "mobility_friendly": "High",
+        "budget_level": "Budget"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "qm-disr-1",
+        "type": "Permanent Safety Closure",
+        "title": "Minar Tower Interior Closed",
+        "detail": "Climbing inside the Qutub Minar tower is permanently banned for all tourists. Viewing is strictly from the expansive ground courtyard.",
+        "verified_by": "Ministry of Culture / ASI Mandate",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Night illumination timings during monsoon weather or heavy rain days"
+    ],
+    "data_completeness_score": 94,
+    "official_sources": [
+      { "name": "Delhi Tourism (DTTDC)", "url": "https://delhitourism.gov.in", "type": "State Tourism Board" },
+      { "name": "Archaeological Survey of India", "url": "https://asi.nic.in", "type": "Federal Custodian" }
+    ]
+  },
+  {
+    "id": "meenakshi-temple",
+    "name": "Meenakshi Amman Temple",
+    "tagline": "Historic Dravidian temple complex with 14 monumental gopurams",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Madurai",
+    "coordinates": { "latitude": 9.9195, "longitude": 78.1193 },
+    "category": "Cultural & Spiritual",
+    "tags": ["Dravidian Architecture", "Pilgrimage", "Temple Heritage", "Sculpture"],
+    "image_url": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1000&q=80",
+    "description": "Dedicated to Goddess Meenakshi (Parvati) and Sundareswarar (Shiva), dating back over 2,500 years with present major structures built between 1623 and 1655. Celebrated for its Hall of Thousand Pillars and towering multi-tiered gopurams.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "Morning: 05:00 to 12:30 | Evening: 16:00 to 22:00 (Sanctum closes mid-day 12:30 to 16:00)",
+        "closed_days": ["Open every day (Festival days have altered darshan schedules)"],
+        "source": "Arulmigu Meenakshi Sundareswarar Temple Administration (HR&CE)",
+        "last_verified": "2026-08-25"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "domestic": 0,
+        "foreign": 0,
+        "special_darshan_ticket": 100,
+        "thousand_pillar_hall": 50,
+        "source": "HR&CE Department Tamil Nadu",
+        "last_verified": "2026-08-25"
+      },
+      "visit_duration": {
+        "estimated_hours": 3.0,
+        "range_min": 2.0,
+        "range_max": 4.5,
+        "basis": "Queue for security, barefoot walking through vast stone prakarams, sanctum darshan line, and Thousand Pillar Hall museum."
+      },
+      "walking_requirements": {
+        "intensity": "High",
+        "estimated_distance_km": 2.5,
+        "surface": "Barefoot stone floors (can become hot in midday sun; coir runners placed on main routes)",
+        "shuttle_info": "Vehicles restricted within 200m perimeter around temple towers.",
+        "source": "Madurai City Traffic Police & Temple Trust",
+        "last_verified": "2026-07-30"
+      },
+      "accessibility": {
+        "step_free_access": "Partial",
+        "stairs": {
+          "has_stairs": true,
+          "details": "Several raised granite thresholds (10-25 cm height) and steps entering the inner sanctums. Thousand Pillar Hall has stepped entrance.",
+          "source": "Madurai Accessibility Field Review",
+          "last_verified": "2026-07-30"
+        },
+        "elevators": {
+          "available": false,
+          "details": "Ancient religious granite architecture; no lifts."
+        },
+        "wheelchairs": {
+          "available": true,
+          "cost": "Free with assistance assistance booth at East Gate",
+          "location": "East Tower (Kizhakku Gopuram) entrance",
+          "details": "Outer corridors are accessible by wheelchair, but inner sanctums have raised granite thresholds that require stepping or lifting."
+        },
+        "audio_guides": {
+          "available": false,
+          "languages": [],
+          "details": "Official temple licensed guides available at entrance; audio guides not supported."
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": false,
+          "locations": ["Outside East and West tower gateways in temple shopping perimeter"],
+          "cleanliness_standard": "Basic public amenities"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Purified water counters located inside the outer prakaram."
+        },
+        "cloakroom_lockers": {
+          "available": true,
+          "rules": "Cell phones, cameras, leather bags, and belts are strictly banned inside temple. Official digital locker facility available at all four gates."
+        },
+        "parking": {
+          "available": true,
+          "location": "Old Central Bus Stand Parking (Madurai Corporation, 600m away)",
+          "cost": "₹50",
+          "last_verified": "2026-07-15"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Madurai Junction (1.5 km)",
+        "nearest_airport": "Madurai International Airport (IXM, 11 km)",
+        "local_transport": "Auto-rickshaws, city buses, cycle rickshaws near temple streets."
+      },
+      "crowd_profile": {
+        "typical_level": "Very High",
+        "peak_hours": "07:00 - 10:30 and 17:30 - 20:30 (Also Fridays, Tuesdays, and Pradosham days)",
+        "quietest_hours": "11:00 - 12:00 and 16:00 - 17:00"
+      },
+      "demographic_fit": {
+        "child_friendly": "Moderate",
+        "senior_friendly": "Moderate",
+        "mobility_friendly": "Challenging",
+        "budget_level": "Budget"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "mm-disr-1",
+        "type": "Mandatory Security & Dress Code",
+        "title": "Strict Electronic Device Ban & Dress Code",
+        "detail": "Mobile phones, smartwatches, and cameras are completely barred inside temple premises per Madras High Court order. Traditional modest attire mandatory (dhotis/pyjamas for men; sarees/salwar with dupatta for women).",
+        "verified_by": "Temple Trust HR&CE Department Notice",
+        "status": "Active"
+      },
+      {
+        "id": "mm-disr-2",
+        "type": "Restricted Access",
+        "title": "Inner Sanctum Non-Hindu Restriction",
+        "detail": "Only practicing Hindus are permitted inside the innermost sanctums of Meenakshi and Sundareswarar. Non-Hindus can explore all outer prakarams, gopurams, and the Thousand Pillar Museum.",
+        "verified_by": "Temple By-Laws",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Special festival queue waiting times during Chithirai festival months (April/May)",
+      "Availability of senior citizen priority carts during heavy rush hours"
+    ],
+    "data_completeness_score": 93,
+    "official_sources": [
+      { "name": "Arulmigu Meenakshi Sundareswarar Temple Official", "url": "https://maduraimeenakshi.hrce.tn.gov.in", "type": "Official Temple Administration" },
+      { "name": "Tamil Nadu Tourism Development Corporation", "url": "https://www.tamilnadutourism.tn.gov.in", "type": "State Tourism Board" }
+    ]
+  },
+  {
+    "id": "hampi-ruins",
+    "name": "Hampi Archaeological Precinct",
+    "tagline": "Sprawling capital of the Vijayanagara Empire amidst surreal granite boulder terrain",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Hampi (Hospet)",
+    "coordinates": { "latitude": 15.3350, "longitude": 76.4600 },
+    "category": "Historical & Heritage",
+    "tags": ["UNESCO World Heritage", "Ancient Ruins", "Boulder Landscapes", "Trekking", "Open Air"],
+    "image_url": "https://images.unsplash.com/photo-1600100397608-f010f4439c2c?auto=format&fit=crop&w=1000&q=80",
+    "description": "A UNESCO World Heritage site spanning over 41 square kilometers along the Tungabhadra River. Features the Vittala Temple Stone Chariot, Virupaksha Temple, royal enclosures, and ancient stepped tanks nestled among dramatic rocky hills.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "Monuments open 06:00 to 18:00; Virupaksha active temple opens 06:00 to 13:00 and 17:00 to 21:00",
+        "closed_days": ["Monuments open 7 days a week; Archaeological Museum at Kamalapur closed Fridays"],
+        "source": "ASI Hampi Mini Circle",
+        "last_verified": "2026-08-10"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "domestic": 40,
+        "foreign": 600,
+        "combo_ticket": "Single ASI ticket covers Vittala Temple, Zenana Enclosure, and Elephant Stables for the same calendar date",
+        "source": "ASI Ticketing",
+        "last_verified": "2026-08-10"
+      },
+      "visit_duration": {
+        "estimated_hours": 6.0,
+        "range_min": 4.0,
+        "range_max": 16.0,
+        "basis": "Full day minimum recommended due to vast geographic dispersion across 15+ scattered monument clusters."
+      },
+      "walking_requirements": {
+        "intensity": "Very High",
+        "estimated_distance_km": 5.5,
+        "surface": "Uneven granite stones, sandy trails, rocky climbs, unshaded open boulder terrain",
+        "shuttle_info": "Electric buggies available for ₹20 each way between the main parking lot and Vittala Temple (approx 1.2 km).",
+        "source": "Hampi World Heritage Area Management Authority (HWHAMA)",
+        "last_verified": "2026-08-05"
+      },
+      "accessibility": {
+        "step_free_access": "Limited",
+        "stairs": {
+          "has_stairs": true,
+          "details": "Major sights (Matanga Hill, Anjanadri Hill, Queen's Bath, Achyutaraya Temple) require rugged stone stairs, rock steps, and uneven ground climbs.",
+          "source": "Karnataka Tourism Accessibility Assessment",
+          "last_verified": "2026-07-15"
+        },
+        "elevators": {
+          "available": false,
+          "details": "Outdoor open-air archaeological landscape; no elevators."
+        },
+        "wheelchairs": {
+          "available": false,
+          "cost": "N/A",
+          "location": "Not standardly provided on site",
+          "details": "Zenana Enclosure and paved section of Vittala Temple can accommodate robust off-road wheelchairs, but 80% of monuments have natural rugged boulder barriers."
+        },
+        "audio_guides": {
+          "available": true,
+          "languages": ["English", "Hindi", "Kannada"],
+          "source": "ASI Audio Guide App"
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": false,
+          "locations": ["At Kamalapur Museum", "Near Vittala Temple electric shuttle parking", "Near Queen's Bath"],
+          "cleanliness_standard": "Basic rural tourism facilities; sparse across remote monuments."
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "RO water kiosks at major ticketed gates; travelers MUST carry ample personal hydration due to dry heat."
+        },
+        "cloakroom_lockers": {
+          "available": false,
+          "rules": "No centralized luggage lockers; travelers must leave large luggage at hotels or taxi."
+        },
+        "parking": {
+          "available": true,
+          "location": "Designated parking at Vittala electric gate, Hampi Bazaar, and Royal Center",
+          "cost": "₹30 - ₹50 per spot",
+          "last_verified": "2026-07-10"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Hosapete Junction (HPT, 13 km, regular trains from Bengaluru/Goa/Hyderabad)",
+        "nearest_airport": "Jindal Vijayanagar Airport (VDY / Toranagallu, 40 km) or Hubballi (HBX, 160 km)",
+        "local_transport": "Hired auto-rickshaws, bicycles, mopeds (Anegundi side), rental private cabs."
+      },
+      "crowd_profile": {
+        "typical_level": "Moderate",
+        "peak_hours": "09:30 - 11:30 and 16:00 - 18:30 (Sunset view points)",
+        "quietest_hours": "06:00 - 08:30 (Coolest morning hours recommended)"
+      },
+      "demographic_fit": {
+        "child_friendly": "Moderate",
+        "senior_friendly": "Low to Moderate",
+        "mobility_friendly": "Challenging",
+        "budget_level": "Budget"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "hampi-disr-1",
+        "type": "Terrain & Sun Warning",
+        "title": "Midday Heat and Sun Exposure",
+        "detail": "Monuments have virtually zero shade canopy. Midday temperatures from March to June frequently exceed 38°C with radiant heat from granite boulders.",
+        "verified_by": "Karnataka State Disaster Management / Tourism Advisory",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Coracle boat ferry operational schedules across Tungabhadra River to Anegundi (subject to dam water discharge without advance notice)",
+      "Bicycle rental deposit policies in Hampi Bazaar"
+    ],
+    "data_completeness_score": 90,
+    "official_sources": [
+      { "name": "HWHAMA Official Portal", "url": "https://hampi.nic.in", "type": "Heritage Management Authority" },
+      { "name": "Karnataka Tourism", "url": "https://karnatakatourism.org", "type": "State Tourism Board" }
+    ]
+  },
+  {
+    "id": "kerala-backwaters-kumarakom",
+    "name": "Kumarakom & Kerala Backwaters",
+    "tagline": "Tranquil network of canals, Vembanad Lake, and migratory bird sanctuary",
+    "country": "India",
+    "state": "Kerala",
+    "city": "Kumarakom (Kottayam)",
+    "coordinates": { "latitude": 9.6175, "longitude": 76.4300 },
+    "category": "Nature & Outdoor",
+    "tags": ["Backwaters", "Eco Tourism", "Bird Sanctuary", "Houseboats", "Relaxation"],
+    "image_url": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1000&q=80",
+    "description": "A scenic cluster of little islands on Vembanad Lake. Renowned for slow-paced houseboat cruises, Ayurveda wellness centers, and the Kumarakom Bird Sanctuary spanning 14 acres of lush mangrove wetlands.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "Bird Sanctuary: 06:00 to 18:00 | Houseboat Day Cruises: 09:30 to 17:30 (anchored at night per fisheries rule)",
+        "closed_days": ["Open 7 days a week"],
+        "source": "Kerala Tourism / Department of Wildlife",
+        "last_verified": "2026-08-30"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "sanctuary_entry_domestic": 50,
+        "sanctuary_entry_foreign": 100,
+        "shikara_boat_hour": 800,
+        "houseboat_day_cruise": 8500,
+        "source": "District Tourism Promotion Council (DTPC) Kottayam",
+        "last_verified": "2026-08-30"
+      },
+      "visit_duration": {
+        "estimated_hours": 4.5,
+        "range_min": 2.5,
+        "range_max": 8.0,
+        "basis": "Morning nature walk in sanctuary or afternoon shikara/houseboat cruise on canals."
+      },
+      "walking_requirements": {
+        "intensity": "Minimal to Moderate",
+        "estimated_distance_km": 1.2,
+        "surface": "Level dirt and wooden boardwalk paths in sanctuary; seated cruising on boats",
+        "shuttle_info": "Boats dock directly at resort and DTPC jetty jetties.",
+        "source": "DTPC Kottayam",
+        "last_verified": "2026-08-15"
+      },
+      "accessibility": {
+        "step_free_access": "Good",
+        "stairs": {
+          "has_stairs": false,
+          "details": "Sanctuary walking path is flat. Boarding houseboats or shikaras requires stepping across a 30-50 cm gangway board; boat crews provide steady physical assistance.",
+          "source": "Responsible Tourism Mission Kerala Audit",
+          "last_verified": "2026-07-20"
+        },
+        "elevators": {
+          "available": false,
+          "details": "Single level wetland and boat decks; not applicable."
+        },
+        "wheelchairs": {
+          "available": true,
+          "cost": "Available at KTDC Waterscapes resort gate",
+          "location": "Sanctuary ticket office",
+          "details": "Level nature trails allow wheelchair transit for first 800m up to the watchtower base (watchtower itself has a spiral wooden stair)."
+        },
+        "audio_guides": {
+          "available": false,
+          "languages": [],
+          "details": "Local naturalists and boat captains provide spoken commentary."
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": true,
+          "locations": ["At DTPC Boat Jetty", "Inside private houseboats (modern attached Western toilets)"],
+          "cleanliness_standard": "High on licensed tourist houseboats"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Bottled and filtered water standard on all booked boats."
+        },
+        "cloakroom_lockers": {
+          "available": true,
+          "rules": "Luggage can be safely kept in air-conditioned houseboat bedrooms or KTDC cloakroom."
+        },
+        "parking": {
+          "available": true,
+          "location": "DTPC Boat Jetty Parking Ground, Kumarakom",
+          "cost": "₹40 - ₹60",
+          "last_verified": "2026-08-01"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Kottayam Railway Station (14 km / 25 mins)",
+        "nearest_airport": "Cochin International Airport (COK, 78 km / 2 hrs)",
+        "local_transport": "State Water Transport Department (SWTD) ferry boats (very economical ₹15), pre-paid taxis, autos."
+      },
+      "crowd_profile": {
+        "typical_level": "Low to Moderate",
+        "peak_hours": "15:00 - 17:30 (Sunset cruise hours)",
+        "quietest_hours": "06:30 - 09:30 (Best for birdwatching)"
+      },
+      "demographic_fit": {
+        "child_friendly": true,
+        "senior_friendly": "High",
+        "mobility_friendly": "High",
+        "budget_level": "Moderate to Premium"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "kerala-disr-1",
+        "type": "Monsoon & Weather Regulation",
+        "title": "Heavy Rain Boating Restriction",
+        "detail": "During intense monsoon weather warnings (Red Alert issued by IMD), the Port Department suspends small shikara boats and motorized leisure cruising for safety.",
+        "verified_by": "Kerala Port Department & District Collector",
+        "status": "Conditional"
+      }
+    ],
+    "unverified_aspects": [
+      "Exact migratory bird species counts prior to November season arrival",
+      "Real-time water hyacinth weed clearance status along smaller inner village canals"
+    ],
+    "data_completeness_score": 92,
+    "official_sources": [
+      { "name": "Kerala Tourism Official Portal", "url": "https://www.keralatourism.org", "type": "State Tourism Board" },
+      { "name": "DTPC Kottayam", "url": "https://dtpckottayam.com", "type": "District Tourism Council" }
+    ]
+  },
+  {
+    "id": "amber-fort-jaipur",
+    "name": "Amber (Amer) Palace & Fort",
+    "tagline": "Hilltop Rajput fortress of yellow and pink sandstone above Maota Lake",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Jaipur",
+    "coordinates": { "latitude": 26.9855, "longitude": 75.8513 },
+    "category": "Historical & Heritage",
+    "tags": ["UNESCO World Heritage", "Hill Forts of Rajasthan", "Mughal Rajput", "Sheesh Mahal"],
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1000&q=80",
+    "description": "Constructed in 1592 by Raja Man Singh I, Amer Fort is situated high on Cheel ka Teela (Hill of Eagles). Features courtyards, the mirror-inlaid Sheesh Mahal, Diwan-i-Aam, and panoramic views of the Aravalli hills.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "Day Visit: 08:00 to 17:30 | Night Tourism: 18:30 to 21:15",
+        "closed_days": ["Open 7 days a week (Closed on Dhulandi/Holi festival morning)"],
+        "source": "Department of Archaeology & Museums, Government of Rajasthan",
+        "last_verified": "2026-09-05"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "domestic": 100,
+        "foreign": 500,
+        "student_domestic": 20,
+        "night_visit_domestic": 100,
+        "source": "Rajasthan Archaeology Department",
+        "last_verified": "2026-09-05"
+      },
+      "visit_duration": {
+        "estimated_hours": 3.0,
+        "range_min": 2.0,
+        "range_max": 4.5,
+        "basis": "Climb up to Suraj Pol, four courtyards, Sheesh Mahal, Zenana palace, and descent."
+      },
+      "walking_requirements": {
+        "intensity": "High",
+        "estimated_distance_km": 2.8,
+        "surface": "Cobblestoned steep ramps, sandstone steps, narrow heritage corridors",
+        "shuttle_info": "Jeeps operate from Amer town base parking up to the rear Chand Pol gate for approx ₹500 round-trip, avoiding the 800m steep uphill walk.",
+        "source": "Jaipur City Transport & Tourism Department",
+        "last_verified": "2026-08-10"
+      },
+      "accessibility": {
+        "step_free_access": "Limited",
+        "stairs": {
+          "has_stairs": true,
+          "details": "Major courtyards and upper palace levels have numerous steep stone stairways without handrails. The Jaleb Chowk can be reached via Jeep road, but upper palace access requires stairs.",
+          "source": "Rajasthan Tourism Accessibility Inspection",
+          "last_verified": "2026-07-28"
+        },
+        "elevators": {
+          "available": false,
+          "details": "Historic medieval fortress; no elevators installed."
+        },
+        "wheelchairs": {
+          "available": true,
+          "cost": "Available at Chand Pol gate entry (deposit required)",
+          "location": "Superintendent office near Jaleb Chowk",
+          "details": "Wheelchair use is limited only to the first courtyard (Jaleb Chowk) and Diwan-e-Aam terrace via steep ramp. Inaccessible to higher residential palaces."
+        },
+        "audio_guides": {
+          "available": true,
+          "languages": ["English", "Hindi", "French", "German", "Spanish"],
+          "source": "Audio Compass / Rajasthan Tourism"
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": false,
+          "locations": ["Jaleb Chowk courtyard", "Near exit ramp"],
+          "cleanliness_standard": "Pay-and-use ASI maintained facility"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Filtered water stations near Diwan-e-Aam."
+        },
+        "cloakroom_lockers": {
+          "available": true,
+          "rules": "Luggage counter available at main Jaleb Chowk entry."
+        },
+        "parking": {
+          "available": true,
+          "location": "Amer town base parking (buses & private cars) or limited top parking near Chand Pol via narrow road",
+          "cost": "₹50 - ₹100",
+          "last_verified": "2026-08-01"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Jaipur Junction (14 km / 35 mins)",
+        "nearest_airport": "Jaipur International Airport (JAI, 22 km / 45 mins)",
+        "local_transport": "AC City Bus Route 5 from Ajmeri Gate (₹30), App cabs, Auto-rickshaws."
+      },
+      "crowd_profile": {
+        "typical_level": "Very High",
+        "peak_hours": "09:00 - 12:00 and 15:30 - 17:30",
+        "quietest_hours": "08:00 - 09:00 (Early morning before tour buses arrive)"
+      },
+      "demographic_fit": {
+        "child_friendly": true,
+        "senior_friendly": "Moderate (Requires taking Jeep instead of walking hill)",
+        "mobility_friendly": "Challenging",
+        "budget_level": "Budget to Moderate"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "amer-disr-1",
+        "type": "Elephant Ride Regulation",
+        "title": "Elephant Rides Strictly Capped",
+        "detail": "Morning elephant rides up the fort are strictly capped at 5 trips per elephant and end by 11:00 AM. Government authorized jeeps provide the reliable alternative.",
+        "verified_by": "Rajasthan Forest & Animal Welfare Board",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Light and Sound Show English commentary operational status during heavy monsoons (show is held in open amphitheater at Maota Lake)",
+      "Real-time jeep queue duration during peak Diwali / Christmas holiday seasons"
+    ],
+    "data_completeness_score": 93,
+    "official_sources": [
+      { "name": "Department of Archaeology & Museums Rajasthan", "url": "https://museumsrajasthan.gov.in", "type": "State Department" },
+      { "name": "Rajasthan Tourism", "url": "https://tourism.rajasthan.gov.in", "type": "Official Tourism Portal" }
+    ]
+  },
+  {
+    "id": "mysore-palace",
+    "name": "Mysore Palace (Amba Vilas)",
+    "tagline": "Indo-Saracenic royal residence with 97,000 illumination bulbs",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Mysuru",
+    "coordinates": { "latitude": 12.3051, "longitude": 76.6552 },
+    "category": "Historical & Heritage",
+    "tags": ["Royal Heritage", "Wadiyar Dynasty", "Indo-Saracenic", "Illumination", "Museum"],
+    "image_url": "https://images.unsplash.com/photo-1600100397835-f010f4439c2c?auto=format&fit=crop&w=1000&q=80",
+    "description": "Designed by British architect Henry Irwin and completed in 1912 for the 24th Wadiyar ruler. Features stained-glass ceilings, carved rosewood doors, solid gold throne displays, and the Durbar Hall.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "10:00 to 17:30 daily | Palace Illumination: Sundays and Public Holidays 19:00 to 19:45",
+        "closed_days": ["Open 365 days a year (Inner palace exhibits may close during royal Dasara rituals)"],
+        "source": "Mysore Palace Board",
+        "last_verified": "2026-09-08"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "domestic": 100,
+        "foreign": 100,
+        "children_10_to_18": 50,
+        "children_under_10": "Free",
+        "audio_kit_included": "Foreign ticket includes multi-lingual audio guide kit",
+        "source": "Mysore Palace Board Official",
+        "last_verified": "2026-09-08"
+      },
+      "visit_duration": {
+        "estimated_hours": 2.0,
+        "range_min": 1.5,
+        "range_max": 3.0,
+        "basis": "Footwear deposit, guided one-way interior walkway, Durbar Hall, and courtyard gardens."
+      },
+      "walking_requirements": {
+        "intensity": "Moderate",
+        "estimated_distance_km": 1.6,
+        "surface": "Polished marble and granite interior floors (must walk in socks or barefoot; shoes deposited at entrance)",
+        "shuttle_info": "Battery operated eco-vehicles available within the outer boundary perimeter (₹20).",
+        "source": "Mysore Palace Board Visitor Guidelines",
+        "last_verified": "2026-08-15"
+      },
+      "accessibility": {
+        "step_free_access": "Good",
+        "stairs": {
+          "has_stairs": true,
+          "details": "Main tourist flow has gentle ramps up to ground floor halls. The upper Durbar Hall has an elevator accessible for seniors and disabled visitors upon request to staff.",
+          "source": "Palace Board Accessibility Desk",
+          "last_verified": "2026-08-15"
+        },
+        "elevators": {
+          "available": true,
+          "details": "Modern service lift is available to transport wheelchair users and elderly visitors between the ground floor and the first-floor Marriage Pavilion / Durbar Hall."
+        },
+        "wheelchairs": {
+          "available": true,
+          "cost": "Free of charge",
+          "location": "Near Varaha Gate entrance counter",
+          "details": "Special indoor wheelchairs with non-marking wheels provided for palace interior to preserve historic floors."
+        },
+        "audio_guides": {
+          "available": true,
+          "languages": ["English", "Hindi", "Kannada", "German", "French", "Italian", "Japanese"],
+          "source": "Palace Board Audio Desk"
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": true,
+          "locations": ["Near South Gate (Varaha Gate) and North Gate exit"],
+          "cleanliness_standard": "Well-maintained tourist convenience facilities"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Purified water dispensing booths inside garden perimeter."
+        },
+        "cloakroom_lockers": {
+          "available": true,
+          "rules": "Shoe deposit counters are free and organized with token system. Camera photography is permitted in courtyard; restricted in specific sacred idol shrines."
+        },
+        "parking": {
+          "available": true,
+          "location": "Large designated multi-bay parking lot outside Varaha Gate",
+          "cost": "₹40 - ₹80",
+          "last_verified": "2026-08-10"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Mysuru Junction (2 km / 10 mins)",
+        "nearest_airport": "Mysuru Airport (MYQ, 10 km) or Bengaluru Kempegowda (BLR, 175 km, 2.5 hrs via Mysore-Bangalore Expressway)",
+        "local_transport": "City KSRTC buses, prepaid autos, horse-drawn tongas for heritage ride around perimeter."
+      },
+      "crowd_profile": {
+        "typical_level": "High",
+        "peak_hours": "11:00 - 14:00 and Sunday evenings during 19:00 illumination",
+        "quietest_hours": "10:00 - 11:00 (Right at opening)"
+      },
+      "demographic_fit": {
+        "child_friendly": true,
+        "senior_friendly": "High",
+        "mobility_friendly": "High",
+        "budget_level": "Budget to Moderate"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "mp-disr-1",
+        "type": "Illumination Timing Restriction",
+        "title": "Palace Illumination Schedule",
+        "detail": "The famous 97,000-bulb exterior illumination is active ONLY on Sundays, national holidays, and during the 10 days of Mysuru Dasara from 19:00 to 19:45. On weekdays, only sound and light show occurs without full palace bulb activation.",
+        "verified_by": "Mysore Palace Board Notification",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Special wheelchair assistant availability during peak Dasara festival days (advance coordination recommended)"
+    ],
+    "data_completeness_score": 95,
+    "official_sources": [
+      { "name": "Mysore Palace Board Official", "url": "https://mysorepalace.karnataka.gov.in", "type": "Official Monument Board" },
+      { "name": "Karnataka Tourism", "url": "https://karnatakatourism.org", "type": "State Tourism Board" }
+    ]
+  },
+  {
+    "id": "ellora-caves",
+    "name": "Ellora Caves (Verul Leni)",
+    "tagline": "34 rock-cut cave temples spanning Hindu, Buddhist, and Jain traditions",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Chhatrapati Sambhaji Nagar (Aurangabad)",
+    "coordinates": { "latitude": 20.0268, "longitude": 75.1793 },
+    "category": "Historical & Heritage",
+    "tags": ["UNESCO World Heritage", "Kailash Temple", "Rock Cut Architecture", "Ancient Monolith"],
+    "image_url": "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1000&q=80",
+    "description": "Dating from the 6th to 10th century CE, Ellora is renowned for Cave 16: the monolithic Kailasa Temple, carved top-down from a single basalt cliff. Features 34 major monasteries and temples stretching over 2 kilometers of cliff face.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "Sunrise to Sunset (Approx. 06:00 to 18:00)",
+        "closed_days": ["Tuesday (Ellora is closed Tuesdays; note Ajanta Caves is closed Mondays)"],
+        "source": "Archaeological Survey of India Aurangabad Circle",
+        "last_verified": "2026-08-20"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "domestic": 40,
+        "foreign": 600,
+        "camera_fee": 25,
+        "source": "ASI Online Ticket Portal",
+        "last_verified": "2026-08-20"
+      },
+      "visit_duration": {
+        "estimated_hours": 4.5,
+        "range_min": 3.0,
+        "range_max": 7.0,
+        "basis": "Kailasa Temple (Cave 16) takes 1.5h; Buddhist group (Caves 1-12) and Jain group (Caves 30-34) require walking or shuttle bus transit."
+      },
+      "walking_requirements": {
+        "intensity": "High",
+        "estimated_distance_km": 3.5,
+        "surface": "Basalt rock, natural stone stairs, uneven cliff terraces, open unshaded cliff road",
+        "shuttle_info": "MSRTC operates open-top electric shuttle buses between Cave 16 and the Jain cave cluster (₹20 per ride).",
+        "source": "ASI Aurangabad Circle",
+        "last_verified": "2026-08-01"
+      },
+      "accessibility": {
+        "step_free_access": "Limited",
+        "stairs": {
+          "has_stairs": true,
+          "details": "Kailasa Temple's lower courtyard is step-free from the main road, but upper galleries, bridge walkways, and higher cliff caves (like Caves 10, 11, 12, and Jain caves) have steep, uneven rock-cut stairs with no ramps.",
+          "source": "Maharashtra Tourism Accessibility Report",
+          "last_verified": "2026-07-15"
+        },
+        "elevators": {
+          "available": false,
+          "details": "Natural monolithic basalt cliff; no elevators."
+        },
+        "wheelchairs": {
+          "available": true,
+          "cost": "Free at main ticket plaza",
+          "location": "Main ASI entrance counter",
+          "details": "Main courtyard of Cave 16 (Kailasa) is accessible via wheelchair ramp. Caves 1 to 15 and 20 to 34 are largely inaccessible to wheelchairs due to rock stair ascents."
+        },
+        "audio_guides": {
+          "available": true,
+          "languages": ["English", "Hindi", "Marathi"],
+          "source": "ASI Audio Guide Portal"
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": true,
+          "locations": ["At main entrance plaza near MTDC restaurant", "Near Cave 16 entrance", "Near Cave 32 (Jain group)"],
+          "cleanliness_standard": "Satisfactory public facilities"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Water filtration points at main plaza and near Kailasa complex."
+        },
+        "cloakroom_lockers": {
+          "available": true,
+          "rules": "Cloakroom available at MTDC tourist facilitation center."
+        },
+        "parking": {
+          "available": true,
+          "location": "Expansive MTDC / ASI parking area outside main gate",
+          "cost": "₹50",
+          "last_verified": "2026-08-01"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Chhatrapati Sambhaji Nagar Railway Station (30 km / 45 mins)",
+        "nearest_airport": "Chhatrapati Sambhaji Nagar Airport (IXU, 35 km)",
+        "local_transport": "MSRTC state transport buses from Central Bus Stand (every 30 mins, ₹45), private tourist taxis."
+      },
+      "crowd_profile": {
+        "typical_level": "Moderate to High",
+        "peak_hours": "10:30 - 15:00",
+        "quietest_hours": "06:30 - 09:00"
+      },
+      "demographic_fit": {
+        "child_friendly": true,
+        "senior_friendly": "Moderate (Cave 16 accessible; other caves challenging)",
+        "mobility_friendly": "Challenging",
+        "budget_level": "Budget"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "ellora-disr-1",
+        "type": "Closure Notice",
+        "title": "Strict Tuesday Closure",
+        "detail": "Ellora Caves are closed every Tuesday for preservation work. (Conversely, Ajanta Caves 100km away are closed on Mondays).",
+        "verified_by": "Archaeological Survey of India Notice",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Exact electric shuttle bus departure frequency on weekdays between Jain and Buddhist groups",
+      "Flash photography restriction enforcement inside dark interior prayer halls (bring small LED torch for ceiling relief inspection)"
+    ],
+    "data_completeness_score": 93,
+    "official_sources": [
+      { "name": "Archaeological Survey of India - Aurangabad", "url": "https://asiaurangabadcircle.in", "type": "Federal Custodian" },
+      { "name": "Maharashtra Tourism (MTDC)", "url": "https://www.maharashtratourism.gov.in", "type": "State Tourism Board" }
+    ]
+  },
+  {
+    "id": "gateway-of-india-mumbai",
+    "name": "Gateway of India & Colaba Waterfront",
+    "tagline": "20th-century arch monument overlooking the Arabian Sea in South Mumbai",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Mumbai",
+    "coordinates": { "latitude": 18.9220, "longitude": 72.8347 },
+    "category": "City Experiences",
+    "tags": ["Indo-Saracenic", "Colonial Heritage", "Waterfront", "Harbor", "Taj Mahal Palace"],
+    "image_url": "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=1000&q=80",
+    "description": "Erected to commemorate the 1911 landing of King George V and Queen Mary at Apollo Bunder. Stands opposite the historic Taj Mahal Palace Hotel and serves as the embarkation point for ferries to Elephanta Caves and Alibaug.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "Open 24 hours daily (Plaza security barricades may regulate entry 23:00 to 05:00)",
+        "closed_days": ["Open 7 days a week"],
+        "source": "Mumbai Police & Maharashtra Tourism",
+        "last_verified": "2026-09-01"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "domestic": 0,
+        "foreign": 0,
+        "note": "Public open plaza; free entry after police baggage scanner",
+        "source": "BMC & Mumbai Police",
+        "last_verified": "2026-09-01"
+      },
+      "visit_duration": {
+        "estimated_hours": 1.0,
+        "range_min": 0.5,
+        "range_max": 2.0,
+        "basis": "Security queue, photo stroll along promenade, sea breeze, and adjacent heritage viewing."
+      },
+      "walking_requirements": {
+        "intensity": "Minimal",
+        "estimated_distance_km": 0.6,
+        "surface": "Level paved promenade and stone promenade tiles",
+        "shuttle_info": "Not needed; plaza is directly accessible from Colaba roads.",
+        "source": "Brihanmumbai Municipal Corporation (BMC)",
+        "last_verified": "2026-08-20"
+      },
+      "accessibility": {
+        "step_free_access": "Good",
+        "stairs": {
+          "has_stairs": false,
+          "details": "Entire plaza promenade is flat with ramped entrances from security gates. Steps exist only at the water ferry jetties descending to boat berths.",
+          "source": "BMC Ward A Accessibility Inspection",
+          "last_verified": "2026-08-10"
+        },
+        "elevators": {
+          "available": false,
+          "details": "Single level public waterfront promenade."
+        },
+        "wheelchairs": {
+          "available": false,
+          "cost": "Bring personal wheelchair",
+          "location": "Paved flat plaza is fully usable for personal manual or electric wheelchairs.",
+          "details": "Paved sidewalks throughout Colaba Causeway and Apollo Bunder are accessible, though dropped kerbs can be intermittently blocked by bollards."
+        },
+        "audio_guides": {
+          "available": false,
+          "languages": [],
+          "details": "Self-guided or heritage walking tours booked via local operators."
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": false,
+          "locations": ["Public pay-and-use convenience block near Apollo Bunder bus terminus"],
+          "cleanliness_standard": "Basic municipal facility; high traffic"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Packaged mineral water sold by authorized kiosks along promenade."
+        },
+        "cloakroom_lockers": {
+          "available": false,
+          "rules": "No public luggage storage at monument; left luggage available at CSMT railway cloakroom 2.5km away."
+        },
+        "parking": {
+          "available": true,
+          "location": "Pay-and-park roadside slots on SBS Road or Regal Cinema circle; scarce during weekends",
+          "cost": "₹60 - ₹120 per hour",
+          "last_verified": "2026-08-01"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Chhatrapati Shivaji Maharaj Terminus (CSMT, 2.5 km) / Churchgate (2.2 km)",
+        "nearest_airport": "Chhatrapati Shivaji Maharaj International Airport (BOM, 26 km / 1-1.5 hrs)",
+        "local_transport": "BEST Bus Routes (111, 112, 138), Black & Yellow Taxis (Kaali Peeli), App Cabs (Ola/Uber)."
+      },
+      "crowd_profile": {
+        "typical_level": "Very High",
+        "peak_hours": "17:00 - 21:00 (Especially Saturday, Sunday, and public holidays)",
+        "quietest_hours": "06:00 - 08:30 (Morning joggers and peaceful sea view)"
+      },
+      "demographic_fit": {
+        "child_friendly": true,
+        "senior_friendly": "High",
+        "mobility_friendly": "High",
+        "budget_level": "Free / Budget"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "gw-disr-1",
+        "type": "Monsoon Sea Ferry Suspension",
+        "title": "Elephanta & Alibaug Ferry Monsoon Ban",
+        "detail": "Passenger ferry boats from Gateway of India to Elephanta Caves and Mandwa/Alibaug are legally suspended every year from June 1 to August 31 due to rough Arabian Sea monsoon conditions.",
+        "verified_by": "Maharashtra Maritime Board (MMB) Regulatory Order",
+        "status": "Seasonal"
+      }
+    ],
+    "unverified_aspects": [
+      "Plaza barricade re-routing during VIP dignitary arrivals at Taj Mahal Palace Hotel"
+    ],
+    "data_completeness_score": 91,
+    "official_sources": [
+      { "name": "Maharashtra Tourism (MTDC)", "url": "https://www.maharashtratourism.gov.in", "type": "State Tourism Board" },
+      { "name": "Brihanmumbai Municipal Corporation", "url": "https://www.mcgm.gov.in", "type": "Municipal Authority" }
+    ]
+  },
+  {
+    "id": "victoria-memorial-kolkata",
+    "name": "Victoria Memorial Hall & Gardens",
+    "tagline": "Grand white Makrana marble monument and museum set in 64 acres of gardens",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Kolkata",
+    "coordinates": { "latitude": 22.5448, "longitude": 88.3426 },
+    "category": "Historical & Heritage",
+    "tags": ["Colonial Architecture", "Museum", "Gardens", "Art Gallery", "Maidan"],
+    "image_url": "https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=1000&q=80",
+    "description": "Constructed between 1906 and 1921 using the same white Makrana marble as the Taj Mahal. Houses 25 galleries containing rare oil paintings, historical manuscripts, weapons, and colonial artifacts.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "Gardens: 05:30 to 18:00 daily | Museum Galleries: 10:00 to 18:00 (Ticket counters close 17:00)",
+        "closed_days": ["Museum galleries closed Mondays and National Holidays; Gardens open 365 days"],
+        "source": "Board of Trustees, Victoria Memorial Hall",
+        "last_verified": "2026-09-02"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "gardens_only": 50,
+        "museum_and_gardens_domestic": 50,
+        "museum_and_gardens_foreign": 500,
+        "school_students_uniform": "Free entry",
+        "source": "Victoria Memorial Hall Official Notice",
+        "last_verified": "2026-09-02"
+      },
+      "visit_duration": {
+        "estimated_hours": 2.5,
+        "range_min": 1.5,
+        "range_max": 4.0,
+        "basis": "Garden promenade, Royal Gallery, Calcutta Gallery, portrait exhibits, and Queen's Hall dome."
+      },
+      "walking_requirements": {
+        "intensity": "Moderate",
+        "estimated_distance_km": 1.8,
+        "surface": "Level paved asphalt garden walks and polished museum marble flooring",
+        "shuttle_info": "Battery operated buggies available inside gardens for elderly visitors (₹30).",
+        "source": "Victoria Memorial Visitor Desk",
+        "last_verified": "2026-08-15"
+      },
+      "accessibility": {
+        "step_free_access": "Good",
+        "stairs": {
+          "has_stairs": true,
+          "details": "Grand exterior podium steps have a gentle ramp on the North Gate side. Ground-floor museum exhibits are level and ramped.",
+          "source": "Victoria Memorial Accessibility Cell",
+          "last_verified": "2026-08-10"
+        },
+        "elevators": {
+          "available": true,
+          "details": "Hydraulic elevator installed for visitors with mobility impairments to reach the first-floor Prince Hall and gallery exhibits."
+        },
+        "wheelchairs": {
+          "available": true,
+          "cost": "Free of charge upon request at North and South gate ticket posts",
+          "location": "North Gate security counter",
+          "details": "Broad walkways and ramps make Victoria Memorial one of Kolkata's most senior- and wheelchair-friendly heritage sites."
+        },
+        "audio_guides": {
+          "available": true,
+          "languages": ["English", "Bengali", "Hindi"],
+          "source": "Official Victoria Memorial Mobile App & Audio Kiosk"
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": true,
+          "locations": ["Inside museum building ground level", "Near South Gate garden exit"],
+          "cleanliness_standard": "Clean, air-conditioned and well-maintained"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Chilled filtered RO dispensers inside museum lobbies."
+        },
+        "cloakroom_lockers": {
+          "available": true,
+          "rules": "Luggage counter available at main gate (no food, umbrellas, or liquids permitted inside museum galleries)."
+        },
+        "parking": {
+          "available": true,
+          "location": "Designated parking on Queen's Way and Cathedral Road outside complex",
+          "cost": "₹40 - ₹60",
+          "last_verified": "2026-08-01"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Howrah Junction (6 km) / Sealdah (5 km)",
+        "nearest_airport": "Netaji Subhash Chandra Bose International Airport (CCU, 20 km / 45 mins)",
+        "local_transport": "Kolkata Metro Blue Line (Rabindra Sadan or Maidan Station, 600m walk), Yellow Taxis, AC City Buses."
+      },
+      "crowd_profile": {
+        "typical_level": "Moderate to High",
+        "peak_hours": "14:30 - 17:30 (Weekends see heavy family garden picnic crowds)",
+        "quietest_hours": "10:00 - 12:00 (Weekday mornings)"
+      },
+      "demographic_fit": {
+        "child_friendly": true,
+        "senior_friendly": "High",
+        "mobility_friendly": "High",
+        "budget_level": "Budget"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "vm-disr-1",
+        "type": "Closure Notice",
+        "title": "Monday Museum Gallery Closure",
+        "detail": "The central marble museum galleries are strictly closed on Mondays. However, the 64-acre landscaped gardens remain open for visitors.",
+        "verified_by": "Victoria Memorial Hall Administration",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Sound and Light show seasonal schedule changes between Bengali and English time slots during winter months"
+    ],
+    "data_completeness_score": 95,
+    "official_sources": [
+      { "name": "Victoria Memorial Hall Official", "url": "https://www.victoriamemorial-cal.org", "type": "Autonomous Body under Ministry of Culture" },
+      { "name": "West Bengal Tourism (WBTDCL)", "url": "https://wbtourism.gov.in", "type": "State Tourism Board" }
+    ]
+  },
+  {
+    "id": "pangong-tso-ladakh",
+    "name": "Pangong Tso & Chang La Pass",
+    "tagline": "Endorheic trans-Himalayan high-altitude saline lake at 4,225 meters",
+    "country": "India",
+    "state": "Ladakh",
+    "city": "Leh District",
+    "coordinates": { "latitude": 33.7595, "longitude": 78.6674 },
+    "category": "Nature & Outdoor",
+    "tags": ["High Altitude", "Himalayas", "Adventure", "Border Area", "Scenic Landscapes"],
+    "image_url": "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1000&q=80",
+    "description": "Stretching 134 km across India and Tibet (China). Renowned for its shades of deep blue, turquoise, and violet water set against rugged arid mountain peaks. Traversed via Chang La Pass at 5,360m (17,590 ft).",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "Checkpost open daylight hours 06:00 to 17:00 (Movement restricted after dark by Indian Army)",
+        "closed_days": ["Road subject to sudden winter snow closure (November to April)"],
+        "source": "District Administration Leh (LAHDC) & Border Roads Organisation (BRO)",
+        "last_verified": "2026-08-28"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "inner_line_permit_domestic": 450,
+        "environment_fee": 400,
+        "protected_area_permit_foreign": 650,
+        "source": "Leh District Administration LAHDC Portal",
+        "last_verified": "2026-08-28"
+      },
+      "visit_duration": {
+        "estimated_hours": 12.0,
+        "range_min": 10.0,
+        "range_max": 24.0,
+        "basis": "Requires 5-6 hours driving each way from Leh (140 km) crossing high mountain pass; overnight stay in Spangmik/Maan or long 14h day-trip."
+      },
+      "walking_requirements": {
+        "intensity": "High to Strenuous (Altitude Restricted)",
+        "estimated_distance_km": 1.0,
+        "surface": "Unpaved gravel, stony lake shore, natural sandy terrain; NO paved walks",
+        "shuttle_info": "4x4 or high ground clearance SUV required; strictly private hired taxis per Leh Taxi Union rules.",
+        "source": "Ladakh Tourism & Taxi Union Guidelines",
+        "last_verified": "2026-08-10"
+      },
+      "accessibility": {
+        "step_free_access": "Challenging",
+        "stairs": {
+          "has_stairs": false,
+          "details": "No formal stairs, but rocky, uneven scree and altitude make walking strenuous. Anyone with mobility limitations must remain inside vehicle or at lakefront road.",
+          "source": "Ladakh Health & Tourism Department",
+          "last_verified": "2026-07-20"
+        },
+        "elevators": {
+          "available": false,
+          "details": "Remote wilderness mountain terrain; zero infrastructure."
+        },
+        "wheelchairs": {
+          "available": false,
+          "cost": "N/A",
+          "location": "Not available",
+          "details": "Extremely difficult for standard wheelchairs due to loose scree, sand, lack of paved walkways, and absence of medical lifts."
+        },
+        "audio_guides": {
+          "available": false,
+          "languages": [],
+          "details": "Local Ladakhi drivers and guides provide guidance."
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": false,
+          "locations": ["Dry pit / basic modern toilets at Tangtse, Durbuk, and Spangmik seasonal eco-camps"],
+          "cleanliness_standard": "Basic high-altitude camping standards; freezing temperatures at night"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Must carry sufficient bottled or boiled water; water freezes in shoulder seasons."
+        },
+        "cloakroom_lockers": {
+          "available": false,
+          "rules": "Luggage remains in assigned tourist vehicle."
+        },
+        "parking": {
+          "available": true,
+          "location": "Designated lakeside parking zone at Spangmik village boundary (strictly prohibited from driving onto the shore)",
+          "cost": "Free / Included in local taxi permit",
+          "last_verified": "2026-08-01"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Jammu Tawi (700+ km)",
+        "nearest_airport": "Kushok Bakula Rimpochee Airport, Leh (IXL, 140 km / 5 hrs driving)",
+        "local_transport": "Authorized Leh Taxi Union 4x4 SUVs (Innova, Scorpio, Fortuner) or self-driven permitted high-clearance vehicles."
+      },
+      "crowd_profile": {
+        "typical_level": "Low to Moderate",
+        "peak_hours": "12:00 - 15:00 (Day-trip tourist turnaround peak)",
+        "quietest_hours": "07:00 - 09:00 (Crisp morning reflection)"
+      },
+      "demographic_fit": {
+        "child_friendly": "Caution (Only for children over 5 due to AMS risk)",
+        "senior_friendly": "Caution (Requires doctor check for cardiac/respiratory fitness)",
+        "mobility_friendly": "Challenging",
+        "budget_level": "Premium (High vehicle hiring and permit costs)"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "pang-disr-1",
+        "type": "Mandatory Acclimatization Notice",
+        "title": "Mandatory 48-Hour Leh Acclimatization",
+        "detail": "By order of LAHDC Leh District Magistrate, all tourists landing at Leh Airport MUST undergo a minimum 48 hours of complete rest in Leh before traveling to Pangong Tso or Khardung La. High risk of Acute Mountain Sickness (AMS). Portable oxygen cylinder strictly advised in vehicle.",
+        "verified_by": "District Magistrate Leh Notification",
+        "status": "Active"
+      },
+      {
+        "id": "pang-disr-2",
+        "type": "Permit Mandate",
+        "title": "Mandatory Inner Line Permit (ILP)",
+        "detail": "Indian citizens require an online Inner Line Permit (lahdclehpermit.in). Foreign passport holders require a Protected Area Permit (PAP) issued through an authorized travel agency for a minimum group of two.",
+        "verified_by": "Ministry of Home Affairs / Leh Administration",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Mobile cellular connectivity (Only postpaid BSNL and Airtel work intermittently; Jio 4G tower active in Spangmik but subject to solar power outages)",
+      "Daily pass condition at Chang La pass during shoulder months (October and May)"
+    ],
+    "data_completeness_score": 88,
+    "official_sources": [
+      { "name": "Ladakh Tourism LAHDC", "url": "https://leh.nic.in", "type": "District Administration" },
+      { "name": "Border Roads Organisation", "url": "https://bro.gov.in", "type": "National Road Authority" }
+    ]
+  },
+  {
+    "id": "city-palace-udaipur",
+    "name": "City Palace Complex & Lake Pichola",
+    "tagline": "Rajasthan's largest palace complex built atop a hill overlooking Lake Pichola",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Udaipur",
+    "coordinates": { "latitude": 24.5764, "longitude": 73.6835 },
+    "category": "Historical & Heritage",
+    "tags": ["Mewar Royal Heritage", "Lakeside Palace", "Mirrors and Murals", "Museum"],
+    "image_url": "https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?auto=format&fit=crop&w=1000&q=80",
+    "description": "Constructed over a period of nearly 400 years by 22 generations of Sisodia Rajput rulers starting in 1559 under Maharana Udai Singh II. Blends Rajasthani and Mughal architectural styles with cupolas, towers, and hanging gardens.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "09:00 to 21:00 (Palace Museum ticket sales end 17:30)",
+        "closed_days": ["Open 7 days a week"],
+        "source": "Maharana of Mewar Charitable Foundation (MMCF)",
+        "last_verified": "2026-09-04"
+      },
+      "entry_fee": {
+        "currency": "INR",
+        "palace_museum_adult": 300,
+        "palace_museum_child_5_to_12": 100,
+        "lake_pichola_boat_cruise": 550,
+        "sunset_boat_cruise": 900,
+        "source": "MMCF Udaipur",
+        "last_verified": "2026-09-04"
+      },
+      "visit_duration": {
+        "estimated_hours": 3.0,
+        "range_min": 2.0,
+        "range_max": 4.5,
+        "basis": "Badi Pol, Tripolia Gate, Mor Chowk (peacock courtyard), Sheesh Mahal, Zenana Mahal, and optional boat cruise from Rameshwar Ghat."
+      },
+      "walking_requirements": {
+        "intensity": "High",
+        "estimated_distance_km": 2.4,
+        "surface": "Narrow stone stairwells, low ceiling passages designed for defense, polished tiles",
+        "shuttle_info": "Golf carts operate from outer gate to main palace ticket courtyard (₹50).",
+        "source": "City Palace MMCF Visitor Service",
+        "last_verified": "2026-08-15"
+      },
+      "accessibility": {
+        "step_free_access": "Limited",
+        "stairs": {
+          "has_stairs": true,
+          "details": "The museum route is a strictly one-way medieval defensive layout with dozens of steep, narrow stone staircases with low lintels. It is NOT step-free.",
+          "source": "Udaipur Heritage Accessibility Audit",
+          "last_verified": "2026-07-25"
+        },
+        "elevators": {
+          "available": false,
+          "details": "No public elevators exist in the historic museum structure."
+        },
+        "wheelchairs": {
+          "available": true,
+          "cost": "Available at Badi Pol entrance",
+          "location": "Main ticket desk",
+          "details": "Wheelchairs can only access the ground-level Manek Chowk courtyard and Zenana Mahal open court. Inaccessible to the upper 80% of palace museum chambers."
+        },
+        "audio_guides": {
+          "available": true,
+          "languages": ["English", "Hindi", "French", "German", "Spanish"],
+          "source": "MMCF Official Audio Tour"
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": false,
+          "locations": ["Inside Manek Chowk", "Zenana Mahal exit courtyard"],
+          "cleanliness_standard": "Clean and well maintained by royal foundation"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Filtered water stations inside courtyards."
+        },
+        "cloakroom_lockers": {
+          "available": true,
+          "rules": "Luggage storage available at Badi Pol main gate."
+        },
+        "parking": {
+          "available": true,
+          "location": "Designated palace parking near Badi Pol (filling fast) or Dudh Talai multi-level parking (800m away)",
+          "cost": "₹70 - ₹150",
+          "last_verified": "2026-08-01"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Udaipur City Railway Station (3 km / 12 mins)",
+        "nearest_airport": "Maharana Pratap Airport Udaipur (UDR, 24 km / 40 mins)",
+        "local_transport": "Auto-rickshaws, app cabs (drop off at Jagdish Temple gate; narrow streets prevent large vehicles)."
+      },
+      "crowd_profile": {
+        "typical_level": "High",
+        "peak_hours": "10:30 - 14:00 and 16:30 - 18:30",
+        "quietest_hours": "09:00 - 10:00 (Right at gate opening)"
+      },
+      "demographic_fit": {
+        "child_friendly": true,
+        "senior_friendly": "Moderate (Stairs can be tiring; courtyard is comfortable)",
+        "mobility_friendly": "Challenging",
+        "budget_level": "Moderate"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "cp-disr-1",
+        "type": "Vehicle Access Restriction",
+        "title": "Old City Narrow Lane Restriction",
+        "detail": "Large four-wheelers and tourist buses are prohibited from entering narrow lanes leading to City Palace between 08:00 and 21:00. Tourists must take auto-rickshaws or walk 400m from external parking gates.",
+        "verified_by": "Udaipur Traffic Police Advisory",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Lake Pichola water level and boat jetty boarding ramp incline during pre-monsoon summer months (May/June)"
+    ],
+    "data_completeness_score": 92,
+    "official_sources": [
+      { "name": "Maharana of Mewar Charitable Foundation", "url": "https://www.eternalmewar.in", "type": "Official Palace Trust" },
+      { "name": "Rajasthan Tourism", "url": "https://tourism.rajasthan.gov.in", "type": "State Tourism Board" }
+    ]
+  },
+  {
+    "id": "louvre-museum-paris",
+    "name": "Musée du Louvre",
+    "tagline": "World's most visited art museum and historic royal palace on the Right Bank of Paris",
+    "country": "France",
+    "state": "Île-de-France",
+    "city": "Paris",
+    "coordinates": { "latitude": 48.8606, "longitude": 2.3376 },
+    "category": "Cultural & Museum",
+    "tags": ["World Heritage", "Art Museum", "Mona Lisa", "Accessible Tourism", "Iconic"],
+    "image_url": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1000&q=80",
+    "description": "Originally built as a fortress in the late 12th century, converted to royal palace and opened as a public museum in 1793. Houses over 35,000 works of art across 73,000 square meters of exhibition space.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "Monday, Thursday, Saturday, Sunday: 09:00 to 18:00 | Wednesday & Friday: 09:00 to 21:00 (Night opening)",
+        "closed_days": ["Closed every Tuesday", "Closed Jan 1, May 1, Dec 25"],
+        "source": "Musée du Louvre Public Service Department",
+        "last_verified": "2026-09-12"
+      },
+      "entry_fee": {
+        "currency": "EUR",
+        "adult_online": 22,
+        "visitors_under_18": 0,
+        "eu_residents_under_26": 0,
+        "disabled_visitors_and_companion": "Free with fast-track entry",
+        "ticketing_mode": "Advance timed-entry reservation strictly mandatory online",
+        "source": "Louvre Official Ticketing",
+        "last_verified": "2026-09-12"
+      },
+      "visit_duration": {
+        "estimated_hours": 3.5,
+        "range_min": 2.0,
+        "range_max": 8.0,
+        "basis": "Security queue under Glass Pyramid, Denon Wing highlights (Mona Lisa, Winged Victory, Venus de Milo), and gift gallery."
+      },
+      "walking_requirements": {
+        "intensity": "High",
+        "estimated_distance_km": 4.0,
+        "surface": "Level polished parquet and stone floors throughout",
+        "shuttle_info": "Museum spans 3 interconnected wings (Denon, Sully, Richelieu) across 4 floors.",
+        "source": "Louvre Visitor Services",
+        "last_verified": "2026-08-20"
+      },
+      "accessibility": {
+        "step_free_access": "Full",
+        "stairs": {
+          "has_stairs": true,
+          "details": "Major staircases (Daru Staircase to Winged Victory) have dedicated wheelchair platform lifts and bypass elevators nearby.",
+          "source": "Louvre Accessibility Department (Accessibilité Handicap)",
+          "last_verified": "2026-08-20"
+        },
+        "elevators": {
+          "available": true,
+          "details": "18 elevators and 20 wheelchair lifts connect all exhibition galleries; iconic circular open hydraulic lift operates in center of Pyramid."
+        },
+        "wheelchairs": {
+          "available": true,
+          "cost": "Free of charge upon loan with photo ID",
+          "location": "Assistance desk under the Pyramid (Allée du Grand Louvre)",
+          "details": "Manual wheelchairs, folding stools, walking sticks, and baby strollers available for loan."
+        },
+        "audio_guides": {
+          "available": true,
+          "languages": ["English", "French", "Spanish", "Italian", "German", "Japanese", "Korean", "Mandarin"],
+          "source": "Nintendo 3DS Audio Guide Kiosks (€6)"
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": true,
+          "locations": ["Under Pyramid reception area", "Every gallery floor in each wing"],
+          "cleanliness_standard": "High European museum standard"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Fountains located near restroom clusters."
+        },
+        "cloakroom_lockers": {
+          "available": true,
+          "rules": "Self-service touch-code lockers free of charge under the Pyramid (maximum baggage dimension: 55 x 35 x 20 cm)."
+        },
+        "parking": {
+          "available": true,
+          "location": "Underground parking garage at Carrousel du Louvre (Avenue du Général Lemonnier)",
+          "cost": "€4.80 per hour",
+          "last_verified": "2026-08-01"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Gare de Lyon (3.5 km) / Gare du Nord (3.2 km)",
+        "nearest_airport": "Paris Charles de Gaulle (CDG, 28 km) / Paris Orly (ORY, 18 km)",
+        "local_transport": "Paris Métro: Palais-Royal Musée du Louvre (Lines 1 & 7) with direct underground entrance to Carrousel."
+      },
+      "crowd_profile": {
+        "typical_level": "Extremely High",
+        "peak_hours": "11:00 - 15:30 (Mona Lisa room has 30-45 min standing queue)",
+        "quietest_hours": "Wednesday/Friday night openings (18:30 - 21:00) or 09:00 sharp"
+      },
+      "demographic_fit": {
+        "child_friendly": true,
+        "senior_friendly": "High",
+        "mobility_friendly": "High",
+        "budget_level": "Moderate"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "louvre-disr-1",
+        "type": "Mandatory Reservation Notice",
+        "title": "Strict Online Time-Slot Requirement",
+        "detail": "On-site ticket sales are strictly discontinued during peak seasons. Visitors without a pre-booked online time slot will be denied entry at the Pyramid entrance.",
+        "verified_by": "Louvre Ticketing Directorate",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Room-by-room temporary artwork rotation schedule (specific galleries may close without prior public notice for loan exhibits)"
+    ],
+    "data_completeness_score": 97,
+    "official_sources": [
+      { "name": "Musée du Louvre Official", "url": "https://www.louvre.fr", "type": "National Museum Authority" },
+      { "name": "Paris Tourist Office", "url": "https://parisjetaime.com", "type": "Official Tourism Bureau" }
+    ]
+  },
+  {
+    "id": "sensoji-tokyo",
+    "name": "Sensō-ji Temple & Asakusa",
+    "tagline": "Tokyo's oldest Buddhist temple founded in 645 AD dedicated to Kannon Bodhisattva",
+    "country": "Japan",
+    "state": "Kanto",
+    "city": "Tokyo (Taito City)",
+    "coordinates": { "latitude": 35.7148, "longitude": 139.7967 },
+    "category": "Cultural & Spiritual",
+    "tags": ["Buddhist Temple", "Historic Edo", "Kaminarimon Gate", "Nakamise Street", "Accessible"],
+    "image_url": "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1000&q=80",
+    "description": "Approached via the iconic Kaminarimon (Thunder Gate) with its massive red paper lantern, leading through Nakamise-dori shopping street to the Five-Story Pagoda and Main Hondo Hall. Rebuilt after WWII with modern accessible infrastructure.",
+    "practical_info": {
+      "opening_hours": {
+        "schedule": "Main Hall (Hondo): 06:00 to 17:00 (Opens 06:30 Oct-Mar) | Temple grounds open 24/7 with evening lantern illumination",
+        "closed_days": ["Open 365 days a year"],
+        "source": "Sensō-ji Administrative Office (Asakusa Taito)",
+        "last_verified": "2026-09-08"
+      },
+      "entry_fee": {
+        "currency": "JPY",
+        "temple_grounds_entry": 0,
+        "main_hall_entry": 0,
+        "note": "Completely free public religious precinct; optional incense/omikuji fortune costs ¥100",
+        "source": "Senso-ji Official Guidelines",
+        "last_verified": "2026-09-08"
+      },
+      "visit_duration": {
+        "estimated_hours": 2.0,
+        "range_min": 1.0,
+        "range_max": 3.0,
+        "basis": "Kaminarimon gate, stroll through Nakamise shopping arcade, incense purification, and Hondo prayer hall."
+      },
+      "walking_requirements": {
+        "intensity": "Minimal to Moderate",
+        "estimated_distance_km": 1.1,
+        "surface": "Level stone paving throughout precinct and barrier-free shopping street",
+        "shuttle_info": "Asakusa Panda Bus and Megurin community loop bus connect subway stations directly.",
+        "source": "Taito City Barrier-Free Tourism Map",
+        "last_verified": "2026-08-15"
+      },
+      "accessibility": {
+        "step_free_access": "Full",
+        "stairs": {
+          "has_stairs": true,
+          "details": "Main Hondo Hall has grand front steps, BUT has an elevator on the east wing that provides step-free access straight into the main worship hall.",
+          "source": "Taito City Universal Tourism Audit",
+          "last_verified": "2026-08-15"
+        },
+        "elevators": {
+          "available": true,
+          "details": "Modern glass elevator operates on the east exterior of the Hondo Main Hall specifically for wheelchair users, seniors, and strollers."
+        },
+        "wheelchairs": {
+          "available": true,
+          "cost": "Free of charge upon request",
+          "location": "Asakusa Culture Tourist Information Center across Kaminarimon",
+          "details": "Precision paved stone paths; tactile paving blocks installed for visually impaired visitors throughout the approach."
+        },
+        "audio_guides": {
+          "available": true,
+          "languages": ["English", "Japanese", "Chinese", "Korean"],
+          "source": "Tokyo Smart Tourism App"
+        }
+      },
+      "amenities": {
+        "restrooms": {
+          "available": true,
+          "accessible": true,
+          "locations": ["Multi-function barrier-free public restrooms located next to Five-Story Pagoda and Asakusa Park"],
+          "cleanliness_standard": "Immaculate Japanese public standard with baby changing and ostomate facilities"
+        },
+        "drinking_water": {
+          "available": true,
+          "details": "Purification water pavilion (Temizuya) for ritual cleansing; beverage vending machines ubiquitous."
+        },
+        "cloakroom_lockers": {
+          "available": true,
+          "rules": "Coin lockers available in Asakusa Subway stations (Lines G & A) and Asakusa Tourist Center."
+        },
+        "parking": {
+          "available": true,
+          "location": "Taito City Asakusa Underground Public Parking (Kaminarimon-dori)",
+          "cost": "¥400 per 30 minutes",
+          "last_verified": "2026-08-01"
+        }
+      },
+      "transit": {
+        "nearest_railway": "Asakusa Station (Tokyo Metro Ginza Line, Toei Asakusa Line, Tobu Skytree Line, 200m walk)",
+        "nearest_airport": "Tokyo Haneda Airport (HND, 25 km / 35 mins via direct Keikyu-Asakusa Line train) / Narita (NRT, 60 km)",
+        "local_transport": "Tokyo Metro, Toei Subway, Tokyo Water Bus (Sumida River cruise pier 300m away)."
+      },
+      "crowd_profile": {
+        "typical_level": "Very High",
+        "peak_hours": "10:30 - 16:30 (Nakamise street is shoulder-to-shoulder with tourists)",
+        "quietest_hours": "06:00 - 08:30 (Serene temple grounds before shops open) or 20:00 - 22:00 (Stunning illumination)"
+      },
+      "demographic_fit": {
+        "child_friendly": true,
+        "senior_friendly": "High",
+        "mobility_friendly": "High",
+        "budget_level": "Free / Budget"
+      }
+    },
+    "verified_disruptions": [
+      {
+        "id": "senso-disr-1",
+        "type": "Etiquette & Crowd Rule",
+        "title": "Nakamise Eating-While-Walking Ban",
+        "detail": "By local shopkeepers' association rule, walking while eating food purchased at Nakamise snack stalls is prohibited to prevent spillage on traditional kimonos and crowds. Visitors must consume snacks directly in front of the stall.",
+        "verified_by": "Asakise Merchant Association Notice",
+        "status": "Active"
+      }
+    ],
+    "unverified_aspects": [
+      "Exact festival stall lottery layouts during Sanja Matsuri weekend in May"
+    ],
+    "data_completeness_score": 96,
+    "official_sources": [
+      { "name": "Sensō-ji Official", "url": "https://www.senso-ji.jp", "type": "Temple Official Site" },
+      { "name": "Go Tokyo (Tokyo Convention & Visitors Bureau)", "url": "https://www.gotokyo.org", "type": "Official Tokyo Guide" }
+    ]
+  }
+]

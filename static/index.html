@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravelReality AI • Know Before You Go</title>
+  <meta name="description" content="AI-powered destination intelligence and personalized travel decision support before you visit.">
+  
+  <!-- Tailwind CSS via official CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS for micro-interactions & accessibility -->
+  <link rel="stylesheet" href="/static/css/custom.css">
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col antialiased selection:bg-sky-500 selection:text-white">
+
+  <!-- Top App Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="#" data-tab="home" class="flex items-center gap-2.5 group focus:outline-none">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-600 to-teal-500 text-white flex items-center justify-center font-black shadow-sm group-hover:scale-105 transition-transform">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        </div>
+        <div>
+          <span class="text-base sm:text-lg font-black tracking-tight text-slate-900">TravelReality<span class="text-sky-600"> AI</span></span>
+          <span class="hidden sm:inline-block ml-2 text-[11px] font-semibold text-slate-400 border-l border-slate-200 pl-2">Know Before You Go</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-1 text-xs">
+        <button data-tab="home" class="px-3 py-2 rounded-xl text-sky-600 font-bold hover:bg-slate-100 transition">Overview</button>
+        <button data-tab="explore" class="px-3 py-2 rounded-xl text-slate-600 font-medium hover:bg-slate-100 transition">Destinations</button>
+        <button data-tab="compare" class="px-3 py-2 rounded-xl text-slate-600 font-medium hover:bg-slate-100 transition relative">
+          Side-by-Side Compare
+          <span id="compare-badge-count" class="hidden ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-sky-600 text-white">0</span>
+        </button>
+        <button data-tab="community" class="px-3 py-2 rounded-xl text-slate-600 font-medium hover:bg-slate-100 transition">Community Reports</button>
+      </nav>
+
+      <!-- Right Header Actions: Profile & Settings -->
+      <div class="flex items-center gap-2">
+        <div id="active-profile-summary">
+          <!-- Dynamically populated profile button -->
+        </div>
+
+        <button class="btn-open-settings p-2 text-slate-500 hover:text-slate-800 rounded-xl hover:bg-slate-100 transition" title="AI Provider & API Settings">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Nav Bar (Bottom pinned or secondary strip) -->
+    <div class="md:hidden flex items-center justify-around border-t border-slate-100 py-2 bg-white text-xs">
+      <button data-tab="home" class="py-1 px-2 text-sky-600 font-bold">Overview</button>
+      <button data-tab="explore" class="py-1 px-2 text-slate-600">Destinations</button>
+      <button data-tab="compare" class="py-1 px-2 text-slate-600">Compare</button>
+      <button data-tab="community" class="py-1 px-2 text-slate-600">Reports</button>
+    </div>
+  </header>
+
+  <!-- Main View Area -->
+  <main id="main-content" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <!-- View rendered by app.js -->
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-white border-t border-slate-200 mt-16 py-12 text-slate-600 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 pb-8 border-b border-slate-100">
+        
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-6 h-6 rounded-lg bg-sky-600 text-white flex items-center justify-center font-bold text-xs">TR</div>
+            <span class="font-extrabold text-slate-900 text-sm">TravelReality AI</span>
+          </div>
+          <p class="text-slate-500 leading-relaxed mb-3">
+            Know Before You Go. Evidence-based destination decision support combining verified ground conditions with personalized traveler profiles.
+          </p>
+          <span class="text-[11px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+            Factual Grounding • Zero Fabrication
+          </span>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-2.5">The Reality Check</h4>
+          <ul class="space-y-1.5 text-slate-500">
+            <li><span class="font-semibold text-slate-700">A.</span> What We Know (Factual Sources)</li>
+            <li><span class="font-semibold text-slate-700">B.</span> How Well It Matches You</li>
+            <li><span class="font-semibold text-slate-700">C.</span> What Could Be Difficult</li>
+            <li><span class="font-semibold text-slate-700">D.</span> What To Verify Before Leaving</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-2.5">Data Sources & Provenance</h4>
+          <ul class="space-y-1.5 text-slate-500">
+            <li>Archaeological Survey of India (ASI)</li>
+            <li>State Tourism Boards (UP, TN, Karnataka, etc.)</li>
+            <li>Open-Meteo Meteorological Service</li>
+            <li>Audited Accessibility Field Inventories</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-2.5">Privacy & Ethics</h4>
+          <p class="text-slate-500 leading-relaxed mb-2">
+            Preferences and accessibility criteria are stored locally on your device only. No health or personal telemetry is transmitted.
+          </p>
+          <button class="btn-open-profile text-sky-600 font-semibold hover:underline">Edit Travel Preferences</button>
+        </div>
+
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 text-[11px] text-slate-400">
+        <span>© 2026 TravelReality AI. Developed for AI Innovation in Tourism & Local Development.</span>
+        <span>Built with FastAPI, Google Gemini, and Open-Meteo.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL: Personalized Travel Profile Questionnaire -->
+  <div id="profile-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+        <div>
+          <h2 class="text-xl font-bold text-slate-900">Personalized Travel Profile</h2>
+          <p class="text-xs text-slate-500 mt-0.5">Customize your travel parameters to tailor Reality Checks and Suitability scoring.</p>
+        </div>
+        <button class="btn-close-modal text-slate-400 hover:text-slate-700 p-1 text-lg">✕</button>
+      </div>
+
+      <form id="profile-form" class="space-y-6 text-xs text-slate-700">
+
+        <!-- Available Time Slider -->
+        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+          <div class="flex items-center justify-between mb-2">
+            <label class="font-bold text-slate-900">Available Time Window</label>
+            <span id="profile-time-display" class="font-bold text-sky-700 bg-sky-100/70 px-2.5 py-0.5 rounded-full text-xs">3.0 Hours</span>
+          </div>
+          <input 
+            type="range" 
+            id="profile-time" 
+            min="1" 
+            max="12" 
+            step="0.5" 
+            value="3.0"
+            class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-sky-600"
+            oninput="document.getElementById('profile-time-display').textContent = this.value + ' Hours'"
+          />
+          <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+            <span>1h (Quick stop)</span>
+            <span>4h (Half day)</span>
+            <span>8h+ (Full day / Excursion)</span>
+          </div>
+        </div>
+
+        <!-- Walking & Accessibility Section (Crucial) -->
+        <div class="space-y-3">
+          <h3 class="font-bold text-slate-900 text-sm">Walking & Mobility Requirements</h3>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block font-medium mb-1 text-slate-700">Preferred Walking Intensity</label>
+              <select id="profile-walk" class="w-full p-2.5 rounded-xl border border-slate-200 bg-white">
+                <option value="Minimal">Minimal (&lt; 1 km, level paths)</option>
+                <option value="Moderate" selected>Moderate (1 - 3 km)</option>
+                <option value="High">High (3+ km / active trekking)</option>
+                <option value="Any">Any / No preference</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-medium mb-1 text-slate-700">Budget Tier</label>
+              <select id="profile-budget" class="w-full p-2.5 rounded-xl border border-slate-200 bg-white">
+                <option value="Budget">Budget / Free</option>
+                <option value="Moderate" selected>Moderate</option>
+                <option value="Premium">Premium</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Hard accessibility switches -->
+          <div class="space-y-2 pt-2">
+            <!-- Step Free (Strict) -->
+            <label class="flex items-start gap-3 p-3 rounded-2xl border border-sky-200 bg-sky-50/50 cursor-pointer hover:bg-sky-50 transition">
+              <input type="checkbox" id="profile-step-free" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500">
+              <div>
+                <span class="font-bold text-sky-950 block">Step-Free Access Required (Wheelchair / Stroller Mandatory)</span>
+                <span class="text-[11px] text-sky-800">Treated as a strict non-negotiable constraint. Venues with unavoidable stairs will be flagged with high mismatch risks.</span>
+              </div>
+            </label>
+
+            <!-- Minimize Stairs -->
+            <label class="flex items-start gap-3 p-3 rounded-2xl border border-slate-200 bg-white cursor-pointer hover:bg-slate-50 transition">
+              <input type="checkbox" id="profile-min-stairs" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500">
+              <div>
+                <span class="font-semibold text-slate-900 block">Minimize Stairs (Preference)</span>
+                <span class="text-[11px] text-slate-500">Prioritizes venues with lifts, level courtyards, or gentle ramps.</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Travel Party Considerations -->
+        <div class="space-y-3">
+          <h3 class="font-bold text-slate-900 text-sm">Travel Companions & Pace</h3>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 bg-white cursor-pointer hover:bg-slate-50">
+              <input type="checkbox" id="profile-children" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-sky-600">
+              <div>
+                <span class="font-semibold text-slate-900 block">Traveling with Children</span>
+                <span class="text-[11px] text-slate-500">Flags safety risks, stroller access, and child amenities.</span>
+              </div>
+            </label>
+
+            <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 bg-white cursor-pointer hover:bg-slate-50">
+              <input type="checkbox" id="profile-senior" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-sky-600">
+              <div>
+                <span class="font-semibold text-slate-900 block">Slower-Paced / Senior Traveler</span>
+                <span class="text-[11px] text-slate-500">Checks for resting benches, golf buggies, and shaded zones.</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Interests Chips -->
+        <div>
+          <label class="block font-bold text-slate-900 mb-2">Primary Interests</label>
+          <div class="flex flex-wrap gap-2">
+            ${['History', 'Architecture', 'Culture', 'Nature', 'Spiritual', 'Museum', 'Waterways', 'Relaxation'].map(item => `
+              <label class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 cursor-pointer text-xs font-medium">
+                <input type="checkbox" value="${item}" class="profile-interest-checkbox rounded border-slate-300 text-sky-600" />
+                <span>${item}</span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Action Footer -->
+        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+          <button type="button" id="btn-reset-profile" class="text-xs font-semibold text-slate-400 hover:text-rose-600 transition">
+            Reset to Defaults
+          </button>
+          <div class="flex items-center gap-2">
+            <button type="button" class="btn-close-modal px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium">Cancel</button>
+            <button type="submit" class="px-5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold shadow-sm transition">Save Preferences</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Settings & AI Provider -->
+  <div id="settings-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+        <h3 class="text-lg font-bold text-slate-900">AI Engine & System Settings</h3>
+        <button class="btn-close-modal text-slate-400 hover:text-slate-700 p-1">✕</button>
+      </div>
+
+      <form id="settings-form" class="space-y-4 text-xs text-slate-700">
+        <div>
+          <label class="block font-semibold text-slate-800 mb-1">Google Gemini API Key (Optional)</label>
+          <input 
+            type="password" 
+            id="settings-gemini-key" 
+            placeholder="AIzaSy..." 
+            class="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500/20 font-mono text-xs"
+          />
+          <p class="text-[11px] text-slate-400 mt-1">If provided, Reality Check synthesis is processed via Google's Gemini API.</p>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-sky-50/70 border border-sky-100 text-[11px] leading-relaxed text-sky-950">
+          <span class="font-bold block text-sky-900 mb-1">Built-in Deterministic AI Fallback:</span>
+          When no key is configured or when offline, TravelReality AI automatically operates using its deterministic rule engine, calculating mathematical suitability and synthesizing structured reports without hallucination.
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" class="btn-close-modal px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold">Save Settings</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- MODAL: Submit Community Condition Report -->
+  <div id="report-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+        <div>
+          <h3 class="text-lg font-bold text-slate-900">Submit Destination Observation</h3>
+          <p class="text-xs text-slate-500">Report temporary closures, unexpected obstacles, or accessibility changes</p>
+        </div>
+        <button class="btn-close-modal text-slate-400 hover:text-slate-700 p-1">✕</button>
+      </div>
+
+      <form id="report-form" class="space-y-3.5 text-xs text-slate-700">
+        <div>
+          <label class="block font-semibold mb-1">Destination</label>
+          <select id="report-dest-select" class="w-full p-2 rounded-xl border border-slate-200 bg-white">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Observation Category</label>
+          <select id="report-category-select" class="w-full p-2 rounded-xl border border-slate-200 bg-white">
+            <option value="Accessibility Issue">Accessibility Issue (Elevator down, ramp obstacle)</option>
+            <option value="Temporary Closure">Temporary Closure or Maintenance</option>
+            <option value="Unexpected Obstacle">Unexpected Obstacle or Crowd Surge</option>
+            <option value="Facility Observation">Facility Observation (Restroom, Locker, Water)</option>
+            <option value="Route Disruption">Route Disruption or Parking Shift</option>
+            <option value="General Practical Observation">General Practical Observation</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Observation Title</label>
+          <input type="text" id="report-title-input" placeholder="e.g. East Gate ticket scanner offline; pay cash at gate 2" class="w-full p-2 rounded-xl border border-slate-200" required />
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Details & Context</label>
+          <textarea id="report-desc-input" rows="3" placeholder="Describe the condition, exact location, date observed, and practical advice for other visitors..." class="w-full p-2 rounded-xl border border-slate-200" required></textarea>
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Your Name / Handle (Optional)</label>
+          <input type="text" id="report-user-input" placeholder="e.g. Traveler_Kavita" class="w-full p-2 rounded-xl border border-slate-200" />
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900">
+          <span class="font-bold">Verification Notice:</span> All submitted reports are recorded as <span class="underline">Unverified</span> until reviewed by our editorial team to protect factual reliability.
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" class="btn-close-modal px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-medium">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold">Submit Report</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+
+  <!-- ES6 App Entrypoint -->
+  <script type="module" src="/static/js/app.js"></script>
+
+</body>
+</html>

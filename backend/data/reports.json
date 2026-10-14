@@ -1,0 +1,63 @@
+[
+  {
+    "id": "rep-5d1d93",
+    "destination_id": "taj-mahal",
+    "destination_name": "Taj Mahal",
+    "category": "Temporary Closure",
+    "title": "East Gate security line temporarily rerouted",
+    "description": "Due to paving work, entry is routed via the shaded garden arcade.",
+    "reported_at": "2026-10-14T08:16:03.632426Z",
+    "reported_by": "TestUser",
+    "verification_status": "verified",
+    "admin_notes": "Verified by monument management inspection team.",
+    "last_moderated_at": "2026-10-14T08:16:03.689648Z"
+  },
+  {
+    "id": "rep-001",
+    "destination_id": "taj-mahal",
+    "destination_name": "Taj Mahal",
+    "category": "Accessibility Issue",
+    "title": "East Gate electric cart queue long in afternoon",
+    "description": "The golf cart queue from Shilpgram parking had a 30-minute wait around 3 PM. Walking the 1km shaded path was faster for those who can walk.",
+    "reported_at": "2026-10-08T15:20:00Z",
+    "reported_by": "Traveler_Rohan",
+    "verification_status": "verified",
+    "admin_notes": "Confirmed by local tourism desk. Added to advisory tips."
+  },
+  {
+    "id": "rep-002",
+    "destination_id": "meenakshi-temple",
+    "destination_name": "Meenakshi Amman Temple",
+    "category": "Facility Observation",
+    "title": "Locker kiosk relocated to outer hall",
+    "description": "Due to renovation near the East tower entrance, the electronic phone deposit locker booth has moved 30 meters left toward the shopping pavilion.",
+    "reported_at": "2026-10-10T09:15:00Z",
+    "reported_by": "Devotee_Priya",
+    "verification_status": "under_review",
+    "admin_notes": "Awaiting cross-check with Madurai HR&CE team."
+  },
+  {
+    "id": "rep-003",
+    "destination_id": "qutub-minar",
+    "destination_name": "Qutub Minar & Mehrauli Archaeological Complex",
+    "category": "Route Obstacle",
+    "title": "Lawn pathway stone pavers smoothed near Iron Pillar",
+    "description": "The ramp transition near the Iron pillar railing was re-leveled last week, making it very smooth for strollers and wheelchairs.",
+    "reported_at": "2026-10-12T11:40:00Z",
+    "reported_by": "Visitor_Amit",
+    "verification_status": "verified",
+    "admin_notes": "Verified by field team inspection on Oct 13."
+  },
+  {
+    "id": "rep-004",
+    "destination_id": "amber-fort-jaipur",
+    "destination_name": "Amber (Amer) Palace & Fort",
+    "category": "Temporary Closure",
+    "title": "Minor maintenance on lower courtyard archway",
+    "description": "Scaffolding observed on the right wing of Jaleb Chowk. Passageway narrowed but accessible.",
+    "reported_at": "2026-10-13T14:10:00Z",
+    "reported_by": "HeritageFan",
+    "verification_status": "unverified",
+    "admin_notes": ""
+  }
+]

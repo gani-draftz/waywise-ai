@@ -1,0 +1,79 @@
+/* Custom Styling & Accessibility Enhancements for TravelReality AI */
+
+:root {
+  --primary: #0284c7;
+  --primary-dark: #0369a1;
+  --accent: #0f766e;
+  --bg-subtle: #f8fafc;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #1e293b;
+  background-color: #f8fafc;
+  scroll-behavior: smooth;
+}
+
+/* Accessible focus outlines */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #0284c7;
+  outline-offset: 2px;
+}
+
+/* Glassmorphism subtle overlay */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at top left, #f0f9ff 0%, #ffffff 60%, #f8fafc 100%);
+}
+
+/* Smooth modal transitions */
+.modal-backdrop {
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Card hover elevations */
+.dest-card {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.dest-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.08);
+}
+
+/* Checklist item toggle animation */
+.checklist-item.checked {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+/* Badge pulse for live condition */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.pulse-badge {
+  animation: pulse-subtle 2s infinite ease-in-out;
+}
+
+/* Print view for reality check reports */
+@media print {
+  header, footer, .no-print, button, nav {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+}
